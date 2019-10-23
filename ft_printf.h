@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/23 14:00:16 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:06:44 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_struct
 	char *buf;
 }					t_struct;
 
-int		ft_parse(va_list ap, t_struct *datas);
+int		ft_parse(va_list ap, t_struct *datas, const char *s);
 int		ft_dispatcher(va_list ap, t_struct *datas);
 int		pf_c(va_list ap, t_struct *datas);
 int		pf_s(va_list ap, t_struct *datas);
