@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:33:55 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/23 18:06:41 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/10/24 16:13:05 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int		ft_dispatcher(va_list ap, t_struct *datas)
 	size_t i;
 
 	i = 0;
-	while (datas->str[i])
+	printf("coucou\n");
+	while (datas->buf[i])
 	{
-		if (datas->str[i] == conv[0])
+		if (datas->buf[i] == conv[0])
 		{
 			printf("JE BREAK !!\n");
 			break;
