@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/24 16:13:05 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/10/25 15:05:30 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ int		pf_s(va_list ap, t_struct *datas)
 {
 	char *tmp;
 	int	len;
-   
-	len	= ft_strlen(va_arg(ap, char *));
-	if (!(tmp = ft_strjoin(datas->buf, va_arg(ap, char *))))
+	char *val;
+
+	val = va_arg(ap, char *);
+	len	= ft_strlen(val);
+	if (!(tmp = ft_strdup(val)))
 		return (0);
-	datas->buf = tmp;
+	if (!(datas->buf = ft_strjoin(datas->buf, tmp)))
+		return (0);
 	free(tmp);
 	return (len);
 }
