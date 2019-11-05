@@ -6,27 +6,24 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:33:55 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/26 17:42:18 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:42:08 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int		ft_dispatcher(va_list ap, t_struct *datas, size_t count)
+int		ft_dispatcher(va_list ap, t_struct *datas)
 {
 	static char *conv= "s";
 	int (*fct[1])(va_list, t_struct *) = {pf_s};
 	size_t i;
 
 	i = 0;
-	while (datas->buf[i])
+	while (datas->str[i])
 	{
-		if (datas->buf[i] == conv[0])
-		{
-			count--;
+		if (datas->str[i] == conv[0])
 			break ;
-		}
 		i++;
 	}
 	if (i >= 0)
