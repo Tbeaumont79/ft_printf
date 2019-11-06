@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/05 18:35:17 by bod              ###   ########.fr       */
+/*   Updated: 2019/11/06 13:14:48 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_struct
 {
 	char *str;
 	char buf[4096];
+	size_t start;
 }					t_struct;
 
 int     ft_buffer(t_struct *datas);

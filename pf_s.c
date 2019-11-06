@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/05 18:49:44 by bod              ###   ########.fr       */
+/*   Updated: 2019/11/06 15:57:36 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 int     pf_s(va_list ap, t_struct *datas)
 {
-	char *tmp;
 	char *val;
-
+	char *tmp;
+	
 	val = va_arg(ap, char *);
 	if (!(tmp = ft_strdup(val)))
-		return (0);
+		return (-1);
 	if (!(datas->str = ft_strjoin(datas->str, tmp)))
-		return (0);
+		return (-1);
+	printf("DANS LE S data->str : %s\n", datas->str);
     if (!(ft_buffer(datas)))
         return (-1);
-	free(tmp);
     return (1);
 }
