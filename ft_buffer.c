@@ -6,7 +6,7 @@
 /*   By: bod <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:48:59 by bod               #+#    #+#             */
-/*   Updated: 2019/11/07 14:30:44 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:19:52 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 int     ft_add_to_buffer(t_struct *datas)
 {
 	int len;
-	static int i = 0;
+	static int i = -1;
 	char *tmp;
 	char *str;
 
 	len = ft_strlen(datas->str);
-	if (!(tmp = ft_substr(datas->str, i, len)))
+	//printf("I = %d\n", i);
+	if (!(tmp = ft_substr(datas->str, i + 1, len)))
 		return (-1);
+	//printf("%s\n",tmp);
+	//printf("LA SIZE : %lu\n", ft_strlen(datas->str));
 	if (!(str = ft_strcat(datas->buf, tmp)))
 		return (-1);
-	i = datas->start;
+	i = datas->start + 1;
 	ft_bzero(tmp, ft_strlen(tmp));
 	return (1);	
 }
