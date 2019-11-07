@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/06 15:57:38 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:45:02 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 //argument puis remplacer les %s 
 int		ft_parse(va_list ap, t_struct *datas, const char *s)
 {
+	int k;
+
+	k = 0;
 	datas->start = 0;
 	if (!(datas->str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (0);
@@ -24,10 +27,8 @@ int		ft_parse(va_list ap, t_struct *datas, const char *s)
 		if (s[datas->start] == '%')
 			ft_dispatcher(ap, datas);
 		else
-			datas->str[datas->start] = s[datas->start];
+			datas->str[k++] = s[datas->start];
 		datas->start++;
 	}
-	if (datas->str[datas->start - 1] == '\n')
-		ft_putstr(datas->buf);
 	return (0);
 }
