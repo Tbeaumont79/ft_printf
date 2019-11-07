@@ -6,7 +6,7 @@
 /*   By: bod <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:48:59 by bod               #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:52 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:41:35 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ int     ft_add_to_buffer(t_struct *datas)
 	return (1);	
 }
 
+void	ft_display_buf(t_struct *datas)
+{
+	int i;
+
+	i = 0;
+	while (datas->buf[i])
+	{
+		if (i == BUFF_SIZE || datas->buf[i] == '\n')
+			ft_putstr(datas->buf);
+		i++;
+	}
+}
+
 int    ft_buffer(t_struct *datas)
 {
     int i;
@@ -40,11 +53,5 @@ int    ft_buffer(t_struct *datas)
     i = 0;
     if (!(ft_add_to_buffer(datas)))
         return (-1);
-    while (datas->buf[i])
-    {
-        if (datas->buf[i] == '\n')
-			printf("%s", datas->buf);
-        i++;
-    }
     return (1);
 }

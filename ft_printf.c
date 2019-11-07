@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:50 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:31:25 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	ft_printf("bonjour je %s  suis un test %s bon%s ", av[1], av[2], av[3]);
+	ft_printf("bonjour je %s \n suis un test %s bon%s ", av[1], av[2], av[3]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:59 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:42:59 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		ft_parse(va_list ap, t_struct *datas, const char *s)
 			datas->str[datas->start] = s[datas->start];
 		datas->start++;
 	}
-	ft_buffer(datas);
-	ft_putstr(datas->buf);
+	ft_display_buf(datas);
 	return (0);
 }
