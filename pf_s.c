@@ -6,26 +6,30 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/07 16:01:26 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2019/11/08 01:26:02 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int     pf_s(va_list ap, t_struct *datas)
+int     pf_s(va_list ap, t_struct datas)
 {
 	char *val;
-	char *tmp;
-	
+    int i;
+
+    i = 0;
 	val = va_arg(ap, char *);
-	if (!(tmp = ft_strdup(val)))
-		return (-1);
-	printf("%s <- AVANT\n", datas->str);
-	if (!(datas->str = ft_strjoin(datas->str, tmp)))
-		return (-1);
-	printf("%s <- APRES\n", datas->str);
-    if (!(ft_buffer(datas)))
-        return (-1);
+    datas.arg_len = ft_strlen(val);
+	printf("%s <- AVANT\n", datas.str);
+    while(val[i])
+    {
+        datas.str[datas.start] = val[i];
+        i++;
+        datas.start++;
+    }
+    datas.str[datas.start] = '\0';
+	printf("%s <- APRES\n", datas.str);
+    ft_buffer(datas);
     return (1);
 }
