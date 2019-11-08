@@ -6,7 +6,7 @@
 /*   By: bod <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:48:59 by bod               #+#    #+#             */
-/*   Updated: 2019/11/08 01:33:10 by bod              ###   ########.fr       */
+/*   Updated: 2019/11/08 14:05:35 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int     ft_add_to_buffer(t_struct datas)
     size_t len;
     size_t i;
   
-    printf("cocoi");
     i = datas.index_buf;
     printf("%lu\n", datas.start);
     len = datas.start + datas.arg_len;

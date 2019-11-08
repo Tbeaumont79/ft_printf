@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/08 01:26:02 by bod              ###   ########.fr       */
+/*   Updated: 2019/11/08 14:00:49 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int     pf_s(va_list ap, t_struct datas)
     datas.str[datas.start] = '\0';
 	printf("%s <- APRES\n", datas.str);
     ft_buffer(datas);
-    return (1);
+    return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/08 01:40:37 by bod              ###   ########.fr       */
+/*   Updated: 2019/11/08 14:08:37 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int		ft_parse(va_list ap, t_struct datas, const char *s)
 	while (datas.str[datas.start])
 	{
 		if (datas.str[datas.start] == '%')
-			ft_dispatcher(ap, datas);
-		else
+        {
+			datas.index_buf = datas.index_buf + ft_dispatcher(ap, datas);
+            datas.start = datas.start + 1;
+        }
+        else
             datas.buf[datas.index_buf] = datas.str[datas.start];
 		datas.start++;
         datas.index_buf++;
