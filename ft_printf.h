@@ -22,17 +22,15 @@
 
 typedef struct		s_struct
 {
-	char str[BUFF_SIZE];
-	char buf[BUFF_SIZE];
-	size_t start;
-    size_t index_buf;
+	char *str;
+	char buf[4096];
     size_t arg_len;
 }					t_struct;
 
 int     ft_buffer(t_struct datas);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
-int		ft_dispatcher(va_list ap, t_struct datas);
+int		ft_dispatcher(va_list ap, t_struct datas, int i);
 int		pf_c(va_list ap, t_struct datas);
-int		pf_s(va_list ap, t_struct datas);
+int		pf_s(va_list ap, t_struct datas, int i);
 void	ft_display_buf(t_struct datas);
 #endif

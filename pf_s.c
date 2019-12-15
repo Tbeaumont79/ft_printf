@@ -13,23 +13,23 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int     pf_s(va_list ap, t_struct datas)
+int pf_s(va_list ap, t_struct datas, int i)
 {
-	char *val;
-    int i;
+    char *val;
+    int j;
 
-    i = 0;
-	val = va_arg(ap, char *);
-    datas.arg_len = ft_strlen(val);
-	printf("%s <- AVANT\n", datas.str);
-    while(val[i])
-    {
-        datas.str[datas.start] = val[i];
-        i++;
-        datas.start++;
+    j = 0;
+    if((val = va_arg(ap, char *) == NULL) {
+        val = "(null)";
     }
-    datas.str[datas.start] = '\0';
-	printf("%s <- APRES\n", datas.str);
+    while (val[j])
+    {
+        datas.str[i] = val[j];
+        j++;
+        i++;
+    }
+
     ft_buffer(datas);
-    return (i);
+    free(datas.str);
+    return (j);
 }

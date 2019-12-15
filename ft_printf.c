@@ -21,10 +21,13 @@ int		ft_printf(const char *s, ...)
 	size_t	 len;
 	
 	len = ft_strlen(s);
-    datas.index_buf = 0;
-    ft_bzero(datas.str, 1);
+	if (!(datas.str = malloc(sizeof(int) * (len + 1)))) {
+		return (0);
+	}
     ft_bzero(datas.buf, 1);
 	ft_parse(ap, datas, s);
+	ft_display_buf(datas);
+
 	va_end(ap);
 	return (0);
 }
