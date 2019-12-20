@@ -34,9 +34,15 @@ int		ft_parse(va_list ap, t_struct datas, const char *s)
 		}
 		else
 		{
+			// analyse tmp en fonction de j
+			// cette boucle sert juste a pas ecraser la concatenation de multiple arg par la chaine de char s
+			// mettre la chaine de char s en parametre du dispatcher ? afin de traiter le tout dans le pf_s ? 
 			while (j < tmp)
+			{
 				j++;
+			}
 			datas.str[j] = s[i];
+			//printf("datas.str[j] = %c et s[i] = %c \n", datas.str[i], s[i]);
 		}
 		j++;
 		i++;
