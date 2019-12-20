@@ -31,5 +31,9 @@ int		ft_parse(va_list ap, t_struct datas, const char *s)
 			datas.str[i] = s[i];
 		i++;
 	}
+	if (s[i] == '\0')
+	{
+		ft_buffer(datas);
+	}
 	return (0);
 }

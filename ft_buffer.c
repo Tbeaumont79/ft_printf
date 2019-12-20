@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-size_t     ft_add_to_buffer(t_struct datas)
+static t_struct     ft_add_to_buffer(t_struct datas)
 {
     int j;
 
@@ -22,7 +22,8 @@ size_t     ft_add_to_buffer(t_struct datas)
         datas.buf[j] = datas.str[j];
         j++;
     }
-    return (1);
+    datas.buf[j] = '\0';
+    return (datas);
 }
 
 void	ft_display_buf(t_struct datas)
@@ -39,11 +40,11 @@ void	ft_display_buf(t_struct datas)
         }
 		i++;
 	}
-    printf("%s\n", datas.buf);
 }
 
 int    ft_buffer(t_struct datas)
 {
-    ft_add_to_buffer(datas);
+    datas = ft_add_to_buffer(datas);
+    ft_display_buf(datas);
     return (1);
 }
