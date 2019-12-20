@@ -32,7 +32,7 @@ int pf_s(va_list ap, t_struct datas, int i)
         j++;
         i++;
     }
-    
+
     datas.str[i] = '\0';
     ft_buffer(datas);
     return (i);

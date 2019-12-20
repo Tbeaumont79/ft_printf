@@ -18,6 +18,9 @@ static t_struct     ft_add_to_buffer(t_struct datas)
     int j;
 
     j = 0;
+    ft_putstr(datas.str);
+    ft_putchar('\n');
+    ft_putstr(datas.buf);
     while (datas.str[j]) {
         datas.buf[j] = datas.str[j];
         j++;

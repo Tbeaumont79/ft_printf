@@ -15,8 +15,12 @@
 
 int		ft_parse(va_list ap, t_struct datas, const char *s)
 {
-	size_t i;
+	int i;
+	int tmp;
+	int j;
 
+	j = 0;
+	tmp = 0;
 	i = 0;
 	if (!(datas.str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (0);
@@ -24,16 +28,22 @@ int		ft_parse(va_list ap, t_struct datas, const char *s)
 	{
 		if (s[i] == '%')
 		{
-			ft_dispatcher(ap, datas, i);
+			tmp = ft_dispatcher(ap, datas, i);
 			i = i + 1;
+			//probleme avec le i dans certains cas voir comment ne pas recrire la string
 		}
 		else
-			datas.str[i] = s[i];
+		{
+			while (j < tmp)
+				j++;
+			datas.str[j] = s[i];
+		}
+		j++;
 		i++;
 	}
 	if (s[i] == '\0')
 	{
 		ft_buffer(datas);
 	}
-	return (0);
+	return (i);
 }
