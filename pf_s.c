@@ -19,8 +19,12 @@ int pf_s(va_list ap, t_struct datas, int i)
     int j;
 
     j = 0;
-    if((val = va_arg(ap, char *) == NULL) {
+    if((val = va_arg(ap, char *)) == NULL)
+    {
         val = "(null)";
+        datas.str[i] = '\0';
+        free(datas.str);
+        return (i);
     }
     while (val[j])
     {
@@ -30,6 +34,6 @@ int pf_s(va_list ap, t_struct datas, int i)
     }
 
     ft_buffer(datas);
-    free(datas.str);
-    return (j);
+    datas.str[i] = '\0';
+    return (i);
 }

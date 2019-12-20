@@ -39,6 +39,7 @@ void	ft_display_buf(t_struct datas)
         }
 		i++;
 	}
+    printf("%s\n", datas.buf);
 }
 
 int    ft_buffer(t_struct datas)

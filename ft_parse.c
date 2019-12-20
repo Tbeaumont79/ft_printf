@@ -18,11 +18,17 @@ int		ft_parse(va_list ap, t_struct datas, const char *s)
 	size_t i;
 
 	i = 0;
-    ft_memcpy(datas.str, s, ft_strlen(s));
-	while (datas.str[i])
+	if (!(datas.str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (0);
+	while (s[i])
 	{
-		if (datas.str[i] == '%')
+		if (s[i] == '%')
+		{
 			ft_dispatcher(ap, datas, i);
+			i = i + 1;
+		}
+		else
+			datas.str[i] = s[i];
 		i++;
 	}
 	return (0);
