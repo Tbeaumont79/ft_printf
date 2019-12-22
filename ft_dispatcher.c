@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int		ft_dispatcher(va_list ap, t_struct datas, int i)
+int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 {
 	static char *conv= "s";
 	int j;
@@ -22,7 +22,7 @@ int		ft_dispatcher(va_list ap, t_struct datas, int i)
 	j = 0;
 	while (conv[j])
 	{
-		if (datas.str[i] == conv[j])
+		if (s[i] == conv[j])
 			break ;
 		j++;
 	}

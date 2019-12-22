@@ -27,10 +27,10 @@ typedef struct		s_struct
     size_t arg_len;
 }					t_struct;
 
-int     ft_buffer(t_struct datas);
+int     ft_buffer(char c, t_struct datas);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
-int		ft_dispatcher(va_list ap, t_struct datas, int i);
+int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s);
 int		pf_c(va_list ap, t_struct datas);
 int		pf_s(va_list ap, t_struct datas, int i);
-void	ft_display_buf(t_struct datas);
+void	ft_display_buf(char *buf);
 #endif

@@ -22,18 +22,10 @@ int pf_s(va_list ap, t_struct datas, int i)
     if((val = va_arg(ap, char *)) == NULL)
     {
         val = "(null)";
-        datas.str[i] = '\0';
-        free(datas.str);
+        ft_buffer('\0', datas);
         return (i);
     }
     while (val[j])
-    {
-        datas.str[i] = val[j];
-        j++;
-        i++;
-    }
-
-    datas.str[i] = '\0';
-    ft_buffer(datas);
+        ft_buffer(val[j++], datas);
     return (i);
 }

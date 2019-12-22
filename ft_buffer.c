@@ -13,41 +13,40 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static t_struct     ft_add_to_buffer(t_struct datas)
+static t_struct ft_add_to_buffer(char c, t_struct datas)
 {
     int j;
 
     j = 0;
-    ft_putstr(datas.str);
-    ft_putchar('\n');
-    ft_putstr(datas.buf);
-    while (datas.str[j]) {
-        datas.buf[j] = datas.str[j];
-        j++;
-    }
-    datas.buf[j] = '\0';
+    datas.buf[j] = c;
+    j++;
     return (datas);
 }
 
-void	ft_display_buf(t_struct datas)
+void ft_display_buf(char *buf)
 {
-	int i;
+    int i;
+    int printable;
 
-	i = 0;
-	while (datas.buf[i])
-	{
-		if (i == BUFF_SIZE || datas.buf[i] == '\n')
+    i = 0;
+    printable = 0;
+    while (buf[i])
+    {
+        if (i == BUFF_SIZE || buf[i] == '\n')
         {
-            datas.buf[i] = '\0';
-			ft_putstr(datas.buf);
+            printable = 1;
+            break;
         }
-		i++;
-	}
+        i++;
+    }
+    if (printable == 1)
+        ft_putstr(buf);
+
 }
 
-int    ft_buffer(t_struct datas)
+int ft_buffer(char c, t_struct datas)
 {
-    datas = ft_add_to_buffer(datas);
-    ft_display_buf(datas);
+    datas = ft_add_to_buffer(c, datas);
+    ft_display_buf(datas.buf);
     return (1);
 }

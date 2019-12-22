@@ -18,12 +18,9 @@ int		ft_printf(const char *s, ...)
 	va_list ap;
 	va_start(ap, s);
 	t_struct datas;
-	size_t	 len;
 	
-	len = ft_strlen(s);
     ft_bzero(datas.buf, 1);
 	ft_parse(ap, datas, s);
-
 	va_end(ap);
 	return (0);
 }
@@ -31,6 +28,6 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	ft_printf("bonjour je %s suis un test %s bon%s \n", av[1], av[2], av[3]);
+	ft_printf("bonjour je %s suis un test %s bon%s             \n ", av[1], av[2], av[3]);
 	return (0);
 }
