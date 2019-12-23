@@ -15,11 +15,9 @@
 
 static t_struct ft_add_to_buffer(char c, t_struct datas)
 {
-    int j;
+    static int j = 0;
 
-    j = 0;
     datas.buf[j] = c;
-    j++;
     return (datas);
 }
 
@@ -30,6 +28,7 @@ void ft_display_buf(char *buf)
 
     i = 0;
     printable = 0;
+    ft_putstr(buf);
     while (buf[i])
     {
         if (i == BUFF_SIZE || buf[i] == '\n')

@@ -15,18 +15,20 @@
 
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 {
-	static char *conv= "s";
+	static char conv[2]= {'s', 'd'};
 	int j;
-	int (*fct[1])(va_list, t_struct, int i) = {pf_s};
+	int size;
+	int (*fct[2])(va_list, t_struct, int i) = {pf_s, pf_d};
 
 	j = 0;
-	while (conv[j])
+	size = ft_strlen(conv);
+	while (j < size)
 	{
 		if (s[i] == conv[j])
 			break ;
 		j++;
 	}
-	if (i >= 0)
-		return (fct[0](ap, datas, i));
+	if (j >= 0 && j <= size)
+		return (fct[j](ap, datas, i));
 	return (-1);
 }

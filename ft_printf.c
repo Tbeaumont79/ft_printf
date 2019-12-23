@@ -28,6 +28,7 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	ft_printf("bonjour je %s suis un test %s bon%s             \n ", av[1], av[2], av[3]);
+	(void)av;
+	ft_printf("bonjour je suis bod est j'ai %d ans \n", 20);
 	return (0);
 }

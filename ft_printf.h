@@ -30,7 +30,9 @@ typedef struct		s_struct
 int     ft_buffer(char c, t_struct datas);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s);
+int 	pf_d(va_list ap, t_struct datas, int i);
 int		pf_c(va_list ap, t_struct datas);
 int		pf_s(va_list ap, t_struct datas, int i);
 void	ft_display_buf(char *buf);
+char	*ft_itoa_base(int nb, int base);
 #endif
