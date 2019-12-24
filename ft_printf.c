@@ -28,7 +28,7 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	(void)av;
-	ft_printf("bonjour je suis bod est j'ai %d ans \n", 20);
+	ft_printf("bonjour je suis %s et j'ai %d ans enfaite je suis nee en %i et %x et un 10: %X\n", av[1], 20, 1999, 14, 10);
+	printf("bonjour je suis %s et j'ai %d ans enfaite je suis nee en %i et %x  et un 10: %X\n", av[1], 20, 1999, 14, 10);
 	return (0);
 }
