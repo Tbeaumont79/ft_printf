@@ -28,9 +28,7 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	int c = 250;
-
-	printf("vrai address : %u\n", c);
-	ft_printf("la miene : %u\n", c);
+	
+	ft_printf("c == %s\n", av[1]);
 	return (0);
 }

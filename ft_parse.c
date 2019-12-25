@@ -13,6 +13,30 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
+// Coder un fonction getFlag qui applique le traitement adequat !
+int ft_get_flag(t_struct datas, const char *s)
+{
+	static char flag[4] = {'-', '0', '.', '*'};
+	int j;
+	int i;
+
+	i = 0;
+	j = 0;
+	while (s[j])
+	{
+		while (flag[i])
+		{
+			if (s[j] == flag[i])
+				return (j);
+			i++;
+		}
+		j++:
+	}
+	return (4);
+}
+
+// checker aussi la precision !
+
 int ft_parse(va_list ap, t_struct datas, const char *s)
 {
 	int i;

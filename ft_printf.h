@@ -28,8 +28,11 @@ typedef struct		s_struct
 }					t_struct;
 
 int     ft_buffer(char c, t_struct datas);
+int		nb_len(long nb, int base);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s);
+int		ft_abs(int nb);
+int		ft_width(int val, char *str, int i, t_struct datas);
 int 	pf_d(va_list ap, t_struct datas, int i);
 int		pf_s(va_list ap, t_struct datas, int i);
 int 	pf_XU(va_list ap, t_struct datas, int i);

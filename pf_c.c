@@ -5,7 +5,6 @@ int pf_c(va_list ap, t_struct datas, int i)
 {
     int val;
     int j;
-    char *stringValue;
 
     j = 0;
     val = va_arg(ap, int);
