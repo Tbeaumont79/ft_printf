@@ -39,7 +39,7 @@ int		nb_len(long nb, int base)
 	return (size);
 }
 
-char	*ft_itoa_base(int nb, int base)
+char	*ft_itoa_base(long long nb, int base)
 {
 	long long nbr;
 	char *str;

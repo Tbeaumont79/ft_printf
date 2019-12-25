@@ -28,7 +28,10 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-	ft_printf("bonjour je suis %s et j'ai %d ans enfaite je suis nee en %i et %x et un 10: %X\n", av[1], 20, 1999, 14, 10);
-	printf("bonjour je suis %s et j'ai %d ans enfaite je suis nee en %i et %x  et un 10: %X\n", av[1], 20, 1999, 14, 10);
+    int a = 10;
+	int *b = &a;
+
+	printf("vrai address : %p\n", b);
+	ft_printf("la miene : %p\n", b);
 	return (0);
 }

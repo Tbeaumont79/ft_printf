@@ -1,19 +1,6 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-char *string_lower(char *s)
-{
-    int i;
-
-    i = 0;
-    while (s[i])
-    {
-        s[i] += 32;
-        i++;
-    }
-    return (s);
-}
-
 int pf_x(va_list ap, t_struct datas, int i)
 {
     int val;

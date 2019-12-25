@@ -35,6 +35,8 @@ int		pf_c(va_list ap, t_struct datas);
 int		pf_s(va_list ap, t_struct datas, int i);
 int 	pf_XU(va_list ap, t_struct datas, int i);
 int 	pf_x(va_list ap, t_struct datas, int i);
+int		pf_p(va_list ap, t_struct datas, int i);
+char	*string_lower(char *s);
 void	ft_display_buf(char *buf);
-char	*ft_itoa_base(int nb, int base);
+char	*ft_itoa_base(long long nb, int base);
 #endif
