@@ -28,10 +28,9 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	(void)ac;
-    int a = 10;
-	int *b = &a;
+	int c = 'c';
 
-	printf("vrai address : %p\n", b);
-	ft_printf("la miene : %p\n", b);
+	printf("vrai address : %c\n", c);
+	ft_printf("la miene : %c\n", c);
 	return (0);
 }
