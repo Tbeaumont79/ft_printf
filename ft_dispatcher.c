@@ -15,10 +15,10 @@
 
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 {
-	static char conv[7]= {'s', 'd', 'i', 'x', 'X', 'p', 'c'};
+	static char conv[8]= {'s', 'd', 'i', 'x', 'X', 'p', 'c', 'u'};
 	int j;
 	int size;
-	int (*fct[7])(va_list, t_struct, int i) = {pf_s, pf_d, pf_d, pf_x, pf_XU, pf_p, pf_c};
+	int (*fct[8])(va_list, t_struct, int i) = {pf_s, pf_d, pf_d, pf_x, pf_XU, pf_p, pf_c, pf_u};
 
 	j = 0;
 	size = ft_strlen(conv);
