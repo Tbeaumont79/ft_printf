@@ -19,11 +19,17 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+typedef enum		e_flags
+{
+	width,
+	size,
+}					t_flags;
 
 typedef struct		s_struct
 {
 	char *str;
 	char buf[4096];
+	int flag[4];
     size_t arg_len;
 }					t_struct;
 
