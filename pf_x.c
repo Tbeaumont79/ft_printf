@@ -1,11 +1,12 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-int pf_x(va_list ap, t_struct datas, int i)
+int pf_x(va_list ap, t_struct datas, int i, const char *s)
 {
     int val;
     int j;
     char *stringValue;
+    (void)s;
 
     j = 0;
     val = va_arg(ap, int);

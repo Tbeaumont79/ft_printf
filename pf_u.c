@@ -1,11 +1,12 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int pf_u(va_list ap, t_struct datas, int i)
+int pf_u(va_list ap, t_struct datas, int i, const char *s)
 {
     unsigned long long int nb;
     char *string;
     int j;
+    (void)s;
 
     j = 0;
     nb = va_arg(ap, unsigned long long int);

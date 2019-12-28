@@ -13,10 +13,11 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int pf_s(va_list ap, t_struct datas, int i)
+int pf_s(va_list ap, t_struct datas, int i, const char *s)
 {
     char *val;
     int j;
+    (void)s;
 
     j = 0;
     if((val = va_arg(ap, char *)) == NULL)

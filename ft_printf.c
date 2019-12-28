@@ -28,10 +28,11 @@ int		ft_printf(const char *s, ...)
 int main(int ac, char **av)
 {
 	int c;
-	(void)av;
 	(void)ac;
+	(void)av;
 	
 	c = 15;
-	ft_printf("c == %015d\n", c);
+	ft_printf("%015d\n", c);
+
 	return (0);
 }
