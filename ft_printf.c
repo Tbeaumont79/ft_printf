@@ -31,8 +31,8 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	
-	c = 15;
-	ft_printf("%020d\n", c);
+	c = 12;
+	ft_printf("bonjour %010d\n", c);
 
 	return (0);
 }

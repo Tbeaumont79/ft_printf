@@ -44,13 +44,11 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     int j;
     int tmp;
     char *stringValue;
-    (void)s;
 
     tmp = i + 1;
     j = 0;
     val = va_arg(ap, int);
     datas = get_flag(datas, tmp, s);
-    printf("size : %d et flag : %c temp : %d\n",datas.flag[size], datas.flag[flags], datas.flag[temp]);
     stringValue = ft_itoa_base(val, 10);
     while (stringValue[j])
         ft_buffer(stringValue[j++], datas);
