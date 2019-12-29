@@ -24,7 +24,7 @@ typedef enum		e_flags
 	flags,
 	width,
 	size,
-	tmp,
+	temp,
 }					t_flags;
 
 typedef struct		s_struct

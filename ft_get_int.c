@@ -4,6 +4,7 @@
 int ft_get_int(t_struct datas, const char *s, int i)
 {
 	int nb;
+	(void)datas;
 
 	nb = 0;
 	if (ft_isdigit(s[i]))

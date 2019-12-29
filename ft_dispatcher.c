@@ -24,11 +24,11 @@ int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 	size = ft_strlen(conv);
 	while (j < size)
 	{
-		if (conv[j] == s[i])
+		if (conv[j] == s[i + 1])
 			break ;
 		j++;
 	}
-	if (j >= 0 && j <= size)
+	if (j >= 0 && j < size)
 		return (fct[j](ap, datas, i, s));
 	return (-1);
 }
