@@ -29,12 +29,11 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
         tmp--;
     while (i < flag_len && s[tmp] != flag[i])
         i++;
-    if (s[tmp] == flag[i] && ft_isdigit(s[i + 1]))
+    if (s[tmp] == flag[i] && ft_isdigit(s[tmp + 1]))
     {
         datas.flag[flags] = flag[i];
         return (get_int(datas, tmp, s));
     }
-
     return (datas);
 }
 
@@ -48,8 +47,10 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     tmp = i + 1;
     j = 0;
     val = va_arg(ap, int);
-    datas = get_flag(datas, tmp, s);
     stringValue = ft_itoa_base(val, 10);
+    datas = get_flag(datas, tmp, s);
+    if (datas.flag[flags] == '0')
+        ft_left_justify(datas, ft_strlen(stringValue));
     while (stringValue[j])
         ft_buffer(stringValue[j++], datas);
     return (i);

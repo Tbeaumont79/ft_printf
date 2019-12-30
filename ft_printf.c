@@ -32,7 +32,7 @@ int main(int ac, char **av)
 	(void)av;
 	
 	c = 12;
-	ft_printf("bonjour %010d\n", c);
+	ft_printf("bonjour %d\n", c);
 
 	return (0);
 }
