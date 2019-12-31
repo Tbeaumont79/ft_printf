@@ -17,6 +17,6 @@ int ft_get_flag(t_struct datas, const char *s, int i)
 	if (j == size_of_flag_array && s[i] == flag[j])
 		datas.flag[flags] = flag[j];
 	else
-		return (i); 
+		return (i + 1); 
 	return (++i);
 }

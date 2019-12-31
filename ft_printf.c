@@ -33,6 +33,5 @@ int main(int ac, char **av)
 	
 	c = 12;
 	ft_printf("bonjour %d\n", c);
-
 	return (0);
 }

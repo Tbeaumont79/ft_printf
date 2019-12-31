@@ -28,6 +28,7 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 			ft_buffer(s[i], datas);
 		if (s[i] == '%')
 		{
+			// si ca return -1 tu peux call le dispatcher avec la bonne index !
 			if (!(i = ft_get_flag(datas, s, i)))
 				return (-1);
 			if (!(i = ft_dispatcher(ap, datas, i - 1, s) + 1))
