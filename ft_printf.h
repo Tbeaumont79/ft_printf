@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/08 13:59:36 by bod              ###   ########.fr       */
+/*   Updated: 2020/01/03 09:55:55 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int		ft_parse(va_list ap, t_struct datas, const char *s);
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s);
 int		ft_abs(int nb);
 int		ft_width(int val, char *str, int i, t_struct datas);
-int 	ft_get_int(t_struct datas, const char *s, int i);
-int 	ft_get_flag(t_struct datas, const char *s, int i);
 int 	pf_d(va_list ap, t_struct datas, int i, const char *s);
 int		pf_s(va_list ap, t_struct datas, int i, const char *s);
 int 	pf_XU(va_list ap, t_struct datas, int i, const char *s);
@@ -51,6 +49,8 @@ int 	pf_x(va_list ap, t_struct datas, int i, const char *s);
 int		pf_p(va_list ap, t_struct datas, int i, const char *s);
 int 	pf_c(va_list ap, t_struct datas, int i, const char *s);
 int		pf_u(va_list ap, t_struct datas, int i, const char *s);
+t_struct	get_flag(t_struct datas, int tmp, const char *s);
+t_struct get_int(t_struct datas, int tmp, const char *s);
 char	*string_lower(char *s);
 void	ft_display_buf(char *buf);
 char	*ft_itoa_base(long long nb, int base);

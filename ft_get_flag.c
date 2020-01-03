@@ -6,29 +6,31 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:18:19 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/03 09:51:35 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int ft_get_flag(t_struct datas, const char *s, int i)
+t_struct get_flag(t_struct datas, int tmp, const char *s)
 {
-	static char flag[4] = {'-', '0', '.', '*'};
-	int j;
-	int size_of_flag_array;
+    static char flag[4] = {'0', '-', '*', '.'};
+    int i;
+    int flag_len;
 
-	j = 0;
-	size_of_flag_array = ft_strlen(flag);
-	while (j < size_of_flag_array && s[i] != flag[j])
-		j++;
-	if (j == size_of_flag_array && ft_isdigit(s[i + 1]))
-		return (ft_get_int(datas, s, i + 2));
-	// le point correspond a une precision faire un traitement apart !
-	if (j == size_of_flag_array && s[i] == flag[j])
-		datas.flag[flags] = flag[j];
-	else
-		return (i + 1); 
-	return (++i);
+    i = 0;
+    flag_len = ft_strlen(flag);
+    while (s[tmp - 1] != '%')
+        tmp--;
+    while (i < flag_len && s[tmp] != flag[i])
+        i++;
+    if (s[tmp] == flag[i] && ft_isdigit(s[tmp + 1]))
+    {
+        datas.flag[flags] = flag[i];
+        return (get_int(datas, tmp, s));
+    }
+    if (s[tmp] != flag[i] && ft_isdigit(s[tmp]))
+        return (get_int(datas, tmp, s));
+    return (datas);
 }
