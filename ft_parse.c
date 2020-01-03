@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 09:54:12 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/03 11:23:24 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int ft_get_int(t_struct datas, const char *s, int i)
 	if (ft_isdigit(s[i]))
 	{
 		nb = nb * 10 + ft_atoi(&s[i]);
+		while (ft_isdigit(s[i]))
+			i++;
+	}
+	if (s[i] == '.')
+	{
+		i++;
 		while (ft_isdigit(s[i]))
 			i++;
 	}

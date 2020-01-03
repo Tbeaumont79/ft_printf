@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/08 00:07:24 by bod              ###   ########.fr       */
+/*   Updated: 2020/01/03 11:23:22 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int main(int ac, char **av)
 	(void)av;
 	
 	c = 12;
-	ft_printf("bonjour %d\n", c);
+	ft_printf("bonjour %05.d\n", c);
 	return (0);
 }
