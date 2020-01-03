@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 09:54:36 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/03 15:10:00 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
     datas = get_flag(datas, tmp, s);
-    if (datas.flag[flags] == '0' || datas.flag[size] > 0)
+    if (datas.flag[flags] == '0' && datas.flag[size] > 0)
         ft_left_justify(datas, ft_strlen(stringValue));
     while (stringValue[j])
         ft_buffer(stringValue[j++], datas);
+	if (datas.flag[flags] == '-')
+		ft_right_justify(datas, ft_strlen(stringValue));
     return (i);
 }

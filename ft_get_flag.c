@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 09:51:35 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/03 15:09:58 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
         tmp--;
     while (i < flag_len && s[tmp] != flag[i])
         i++;
+	if (s[tmp] == flag[i])
+		datas.flag[flags] = flag[i];
     if (s[tmp] == flag[i] && ft_isdigit(s[tmp + 1]))
-    {
-        datas.flag[flags] = flag[i];
-        return (get_int(datas, tmp, s));
-    }
+        return (get_int(datas, tmp + 1, s));
     if (s[tmp] != flag[i] && ft_isdigit(s[tmp]))
-        return (get_int(datas, tmp, s));
+        return (get_int(datas, tmp + 1, s));
     return (datas);
 }

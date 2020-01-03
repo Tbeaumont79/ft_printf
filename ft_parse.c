@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 11:23:24 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/03 14:00:21 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static int ft_get_flag(t_struct datas, const char *s, int i)
 
 	j = 0;
 	size_of_flag_array = ft_strlen(flag);
-	while (j < size_of_flag_array && s[i] != flag[j])
+	while (j < size_of_flag_array && s[i + 1] != flag[j])
 		j++;
-	if (j == size_of_flag_array && ft_isdigit(s[i + 1]))
+	if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
 		return (ft_get_int(datas, s, i + 2));
 	// le point correspond a une precision faire un traitement apart !
-	if (j == size_of_flag_array && s[i] == flag[j])
+	if (s[i + 1] == flag[j])
 		datas.flag[flags] = flag[j];
 	else
-		return (i + 1); 
+		return (-1);
 	return (++i);
 }
 
