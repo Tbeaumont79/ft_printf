@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 14:00:21 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/04 12:01:23 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,50 @@ static int ft_get_int(t_struct datas, const char *s, int i)
 	return (i);
 }
 
+static int ft_get_prec(t_struct datas, const char *s, int i, int size_of_flag)
+{
+	// the main idea is to skip the prec 
+}
+
 static int ft_get_flag(t_struct datas, const char *s, int i)
 {
 	static char flag[4] = {'-', '0', '.', '*'};
 	int j;
+	int tmp;
 	int size_of_flag_array;
 
 	j = 0;
+	tmp = 0;
 	size_of_flag_array = ft_strlen(flag);
+	while (s[tmp] && s[tmp] != '.')
+		tmp++;
 	while (j < size_of_flag_array && s[i + 1] != flag[j])
 		j++;
 	if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
 		return (ft_get_int(datas, s, i + 2));
 	// le point correspond a une precision faire un traitement apart !
 	if (s[i + 1] == flag[j])
+	{
 		datas.flag[flags] = flag[j];
+		i++;
+	}
 	else
 		return (-1);
 	return (++i);
 }
 
+
+
 int ft_parse(va_list ap, t_struct datas, const char *s)
 {
 	int i;
 	int val;
+	int j;
 
+	j = 0;
 	i = 0;
 	val = 0;
-    ft_bzero(datas.buf, ft_strlen(s) + 1);
+	ft_bzero(datas.buf, ft_strlen(s) + 1);
 	while (s[i])
 	{
 		if (s[i] && s[i] != '%')
