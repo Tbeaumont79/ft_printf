@@ -30,9 +30,10 @@ int main(int ac, char **av)
 	int c;
 	(void)ac;
 	(void)av;
-	
+
+   ft_printf("other test ft_printf: %015.4d\n", 12); 
+   ft_printf("other test1 ft_printf: %.4d\n", 12);
+   ft_printf("other test2 ft_printf: %00.4d\n", 12);
 	c = 12;
-	ft_printf("%05d coucou\n", c);
-	printf("%05d coucou\n",c);
 	return (0);
 }

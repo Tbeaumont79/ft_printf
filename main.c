@@ -15,9 +15,8 @@
 
 int main()
 {
-   printf("Characters: %c %c \n", 'a', 65);
-   printf("Width trick: %*d \n", 5, 10);
-   printf("other test: %015.4d\n", 12);
-   printf("string :: %.5s   \n", "coucou");
+   printf("other test 015.4d: %015.4d\n", 12);
+   printf("other test1 .4d: %.4d\n", 12);
+   printf("other test2 00.4d: %00.4d\n", 12);
    return 0;
 }

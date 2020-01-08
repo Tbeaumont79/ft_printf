@@ -22,14 +22,31 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
     i = 0;
     flag_len = ft_strlen(flag);
     while (s[tmp - 1] != '%')
+    {
+        if (s[tmp] == '.' && ft_isdigit(s[tmp + 1]))
+        {
+            datas.flag[flags] = s[tmp];
+            datas = get_int(datas, tmp + 1, s);
+            printf("and there is the result : %d\n", datas.flag[size_prec]);
+        }
         tmp--;
+    }
     while (i < flag_len && s[tmp] != flag[i])
         i++;
-	if (s[tmp] == flag[i])
+	printf("s[tmp] :: %c et flag[i] == %c \n", s[tmp], flag[i]);
+    if (s[tmp] == flag[i])
 		datas.flag[flags] = flag[i];
     if (s[tmp] == flag[i] && ft_isdigit(s[tmp + 1]))
-        return (get_int(datas, tmp + 1, s));
+        datas = get_int(datas, tmp + 1, s);
     if (s[tmp] != flag[i] && ft_isdigit(s[tmp]))
-        return (get_int(datas, tmp + 1, s));
+        datas = get_int(datas, tmp + 1, s);
+   /* if (s[datas.flag[temp]] == '.' && ft_is_digit(s[datas.flag[temp] + 1]))
+    {
+        tmp = datas.flag[temp];
+        datas = get_int(datas, tmp + 1, s);
+    }*/
     return (datas);
 }
+
+//faire un check dans la boucle de decrementation si s[tmp] == '.' et que ft_isdigit[tmp + 1]
+//alors prec == 1 et datas.flag[size_prec == get_int(datas, tmp + 1, s) ] et comme ca tu soustrait ca a la valeur des autres flag and its done

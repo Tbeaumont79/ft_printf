@@ -34,12 +34,12 @@ static int ft_get_int(t_struct datas, const char *s, int i)
 	}
 	return (i);
 }
-
+/**
 static int ft_get_prec(t_struct datas, const char *s, int i, int size_of_flag)
 {
 	// the main idea is to skip the prec 
 }
-
+**/
 static int ft_get_flag(t_struct datas, const char *s, int i)
 {
 	static char flag[4] = {'-', '0', '.', '*'};
