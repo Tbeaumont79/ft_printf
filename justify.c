@@ -16,19 +16,34 @@
 static void		fill_with_char(char c, t_struct datas, int final_length)
 {
 	int j;
+    int prec_len;
 
 	j = 0;
+    prec_len = (datas.flag[size_prec] -  datas.flag[size]) + final_length;
+    printf("prec_len :: %d\n", prec_len);
 	while (j < final_length)
 	{
-		ft_buffer(c, datas);
+        if (prec_len > 0)
+        {
+            while (final_length - prec_len != j)
+            {
+                ft_buffer(' ', datas);
+                j++;
+            }
+        }
+        if (c == '0')
+		    ft_buffer(c, datas);
+        else
+            ft_buffer(' ', datas);
 		j++;
+        prec_len--;
 	}
 }
 
 static int		ft_get_final_length(int len_arg, t_struct datas)
 {
 	return (len_arg > datas.flag[size] ? 
-			len_arg - datas.flag[size] : datas.flag[size] - len_arg);
+			len_arg - datas.flag[size] : (datas.flag[size] - len_arg));
 }
 
 void	ft_left_justify(t_struct datas, int len_arg)

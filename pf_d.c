@@ -23,7 +23,7 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     tmp = i + 1;
     j = 0;
     datas = get_flag(datas, tmp, s);
-    
+    printf(" je suis dans pf_d et size_prec :: %d\n", datas.flag[size_prec]);   
 	val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
     if (datas.flag[flags] == '0' && datas.flag[size] > 0)
