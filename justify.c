@@ -13,22 +13,30 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static void		fill_with_char(char c, t_struct datas, int final_length)
+static void		fill_with_char(char c, t_struct datas, int final_length, int len_arg)
 {
 	int j;
     int prec_len;
+    int tmp;
 
-	j = 0;
-    prec_len = (datas.flag[size_prec] -  datas.flag[size]) + final_length;
-    printf("prec_len :: %d\n", prec_len);
-	while (j < final_length)
+    j = 0;
+    tmp = datas.flag[size];
+    prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
+    // pour le moment je mets 0 par supposition mais besoin de faire plus de test !
+    while (j < final_length)
 	{
         if (prec_len > 0)
         {
-            while (final_length - prec_len != j)
+            while (tmp > prec_len)
             {
                 ft_buffer(' ', datas);
-                j++;
+                tmp--;
+            }
+            tmp--;
+            while (prec_len > 0 && tmp <= prec_len)
+            {
+                ft_buffer('0', datas);
+                prec_len--;
             }
         }
         if (c == '0')
@@ -36,7 +44,6 @@ static void		fill_with_char(char c, t_struct datas, int final_length)
         else
             ft_buffer(' ', datas);
 		j++;
-        prec_len--;
 	}
 }
 
@@ -52,9 +59,9 @@ void	ft_left_justify(t_struct datas, int len_arg)
 
 	final_length = ft_get_final_length(len_arg, datas);
 	if (datas.flag[flags] == '0')
-		fill_with_char('0', datas, final_length);
+		fill_with_char('0', datas, final_length, len_arg);
 	else
-		fill_with_char(' ', datas, final_length);
+		fill_with_char(' ', datas, final_length, len_arg);
 }
 
 void	ft_right_justify(t_struct datas, int len_arg)
@@ -63,5 +70,5 @@ void	ft_right_justify(t_struct datas, int len_arg)
 
 	final_length = ft_get_final_length(len_arg, datas);
 	if (datas.flag[flags] == '-')
-		fill_with_char(' ', datas, final_length);
+		fill_with_char(' ', datas, final_length, len_arg);
 }
