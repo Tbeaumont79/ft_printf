@@ -27,13 +27,11 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
         {
             datas.flag[flags] = s[tmp];
             datas = get_int(datas, tmp + 1, s);
-            printf("and there is the result : %d\n", datas.flag[size_prec]);
         }
         tmp--;
     }
     while (i < flag_len && s[tmp] != flag[i])
         i++;
-	printf("s[tmp] :: %c et flag[i] == %c \n", s[tmp], flag[i]);
     if (s[tmp] == flag[i])
 		datas.flag[flags] = flag[i];
     if (s[tmp] == flag[i] && ft_isdigit(s[tmp + 1]))

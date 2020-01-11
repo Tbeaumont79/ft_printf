@@ -31,10 +31,9 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
-   ft_printf("other test ft_printf:%03.0d\n", 12); 
-   printf("other test printf:%03.0d\n", 12);
+   ft_printf("other test ft_printf:%01.d\n", 12); 
+   printf("other test printf:%01.d\n", 12);
    //ft_printf("other test1 ft_printf: %.4d\n", 12);
-   printf("TEST :: %07.5d", 12);
    //ft_printf("other test2 ft_printf: %00.4d\n", 12);
 	c = 12;
 	return (0);
