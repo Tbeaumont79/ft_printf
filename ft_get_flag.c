@@ -41,7 +41,10 @@ t_struct get_flag(t_struct datas, const char *s, int i)
         datas.flag[temp]++;
     }
     if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
+    {
+        datas.flag[flags] = flag[j];
         datas = get_int(datas, datas.flag[temp] + 2, s);
+    }
     return (datas);
 }
 
