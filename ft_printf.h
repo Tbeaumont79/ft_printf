@@ -52,7 +52,7 @@ int 	pf_x(va_list ap, t_struct datas, int i, const char *s);
 int		pf_p(va_list ap, t_struct datas, int i, const char *s);
 int 	pf_c(va_list ap, t_struct datas, int i, const char *s);
 int		pf_u(va_list ap, t_struct datas, int i, const char *s);
-t_struct	get_flag(t_struct datas, int tmp, const char *s);
+t_struct	get_flag(t_struct datas, const char *s, int i);
 t_struct get_int(t_struct datas, int tmp, const char *s);
 char	*string_lower(char *s);
 void	ft_display_buf(char *buf);

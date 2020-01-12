@@ -17,12 +17,10 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
 {
     int val;
     int j;
-    int tmp;
     char *stringValue;
 
-    tmp = i + 1;
+    (void)s;
     j = 0;
-    datas = get_flag(datas, tmp, s);
     val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
     if (datas.flag[flags] == '0' && datas.flag[size] > 0)
