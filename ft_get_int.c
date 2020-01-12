@@ -20,17 +20,19 @@ t_struct get_int(t_struct datas, int tmp, const char *s)
     
     nb = 0;
     if (datas.flag[prec] == '.')
-        preci++;
+        preci = 1;
+    printf("tmp = %d et datas.flag[temp] == %d\n", tmp, datas.flag[temp]);
     if (ft_isdigit(s[tmp]))
     {
         nb = nb * 10 + ft_atoi(&s[tmp]);
         while (ft_isdigit(s[tmp]))
             tmp++;
     }
+    printf(" AFettmp = %d et datas.flag[temp] == %d\n", tmp, datas.flag[temp]);
     if (preci == 1)
         datas.flag[size_prec] = nb;
     else
         datas.flag[size] = nb;
-    datas.flag[temp] = tmp++;
+    datas.flag[temp] = tmp;
     return (datas);
 }

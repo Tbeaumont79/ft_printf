@@ -23,6 +23,7 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     j = 0;
     val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
+    printf("datas.flag[size_prec] == %c \n", datas.flag[size_prec]);
     if (datas.flag[flags] == '0' && datas.flag[size] > 0)
         ft_left_justify(datas, ft_strlen(stringValue));
     while (stringValue[j])

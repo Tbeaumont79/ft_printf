@@ -89,8 +89,8 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 		{
 			// si ca return -1 tu peux call le dispatcher avec la bonne index !
             datas = get_flag(datas, s, i);
-            printf("FLAG %c \n", datas.flag[flags]);
             i = datas.flag[temp];
+            printf("i == %d et , s[i] == %c\n", i, s[i - 2]);
 //            printf("datas.flag[flag] :: %c, datas.flag[prec] -> %c datas.size_prec -> %d datas.size -> %d et s[i - 2] %c et i :: %d \n", datas.flag[flags], datas.flag[prec], datas.flag[size_prec], datas.flag[size], s[i], i);
 			
             if (!(i = ft_dispatcher(ap, datas, i - 1, s) + 1))
