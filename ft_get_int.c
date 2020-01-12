@@ -16,19 +16,18 @@
 t_struct get_int(t_struct datas, int tmp, const char *s)
 {
     int nb;
-    int prec;
-
-    prec = 0;
+    static int preci = 0;
+    
     nb = 0;
-    if (datas.flag[flags] == '.')
-        prec = 1;
+    if (datas.flag[prec] == '.')
+        preci++;
     if (ft_isdigit(s[tmp]))
     {
         nb = nb * 10 + ft_atoi(&s[tmp]);
         while (ft_isdigit(s[tmp]))
             tmp++;
     }
-    if (prec == 1)
+    if (preci == 1)
         datas.flag[size_prec] = nb;
     else
         datas.flag[size] = nb;

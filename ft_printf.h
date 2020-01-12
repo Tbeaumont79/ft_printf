@@ -25,6 +25,7 @@ typedef enum		e_flags
 	width,
 	size,
     size_prec,
+    prec,
 	temp,
 }					t_flags;
 
@@ -32,7 +33,7 @@ typedef struct		s_struct
 {
 	char *str;
 	char buf[4096];
-	int flag[5];
+	int flag[6];
     size_t arg_len;
 }					t_struct;
 

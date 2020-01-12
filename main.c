@@ -15,8 +15,6 @@
 
 int main()
 {
-   printf("other test 015.4d: %015.4d\n", 12);
-   printf("other test1 .4d: %.4d\n", 12);
-   printf("other test2 00.4d: %00.4d\n", 12);
+   printf("other:%05.7d\n", 12);
    return 0;
 }

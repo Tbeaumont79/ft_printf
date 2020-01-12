@@ -23,9 +23,9 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
     flag_len = ft_strlen(flag);
     while (s[tmp - 1] != '%')
     {
-        if (s[tmp] == '.' && ft_isdigit(s[tmp + 1]))
+        if (s[tmp] == '.' || (s[tmp] == '.' && ft_isdigit(s[tmp + 1])))
         {
-            datas.flag[flags] = s[tmp];
+            datas.flag[prec] = s[tmp];
             datas = get_int(datas, tmp + 1, s);
         }
         tmp--;
@@ -38,7 +38,7 @@ t_struct get_flag(t_struct datas, int tmp, const char *s)
         datas = get_int(datas, tmp + 1, s);
     if (s[tmp] != flag[i] && ft_isdigit(s[tmp]))
         datas = get_int(datas, tmp + 1, s);
-   /* if (s[datas.flag[temp]] == '.' && ft_is_digit(s[datas.flag[temp] + 1]))
+    /* if (s[datas.flag[temp]] == '.' && ft_is_digit(s[datas.flag[temp] + 1]))
     {
         tmp = datas.flag[temp];
         datas = get_int(datas, tmp + 1, s);
