@@ -34,12 +34,7 @@ static int ft_get_int(t_struct datas, const char *s, int i)
 	}
 	return (i);
 }
-/**
-static int ft_get_prec(t_struct datas, const char *s, int i, int size_of_flag)
-{
-	// the main idea is to skip the prec 
-}
-**/
+
 static int ft_get_flag(t_struct datas, const char *s, int i)
 {
 	static char flag[4] = {'-', '0', '.', '*'};
@@ -56,7 +51,6 @@ static int ft_get_flag(t_struct datas, const char *s, int i)
 		j++;
 	if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
 		return (ft_get_int(datas, s, i + 2));
-	// le point correspond a une precision faire un traitement apart !
 	if (s[i + 1] == flag[j])
 	{
 		datas.flag[flags] = flag[j];
@@ -88,6 +82,7 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 			// si ca return -1 tu peux call le dispatcher avec la bonne index !
 			if (!(i = ft_get_flag(datas, s, i)))
 				return (-1);
+            printf("datas.flag[flag] :: %c\n", datas.flag[flags]);
 			if (!(i = ft_dispatcher(ap, datas, i - 1, s) + 1))
 				return (-1);
 		}
