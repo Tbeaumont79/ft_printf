@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/13 12:26:19 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:10:36 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		ft_printf(const char *s, ...)
 
 int main(int ac, char **av)
 {
-	int c;
 	(void)ac;
 	(void)av;
 
@@ -35,6 +34,5 @@ int main(int ac, char **av)
    printf("other test printf:%010.5d\n", 123);
    //ft_printf("other test1 ft_printf: %.4d\n", 12);
    //ft_printf("other test2 ft_printf: %00.4d\n", 12);
-	c = 12;
 	return (0);
 }
