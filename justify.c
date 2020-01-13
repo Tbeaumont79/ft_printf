@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/13 14:10:32 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:40:45 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	ft_left_justify(t_struct datas, int len_arg)
 void	ft_right_justify(t_struct datas, int len_arg)
 {
 	int final_length;
-
+	
+	// tester en faisant l'inverse i.e afficher des 0 puis des spaces (apres avoir affiche 12)
 	final_length = ft_get_final_length(len_arg, datas);
 	if (datas.flag[flags] == '-')
 		fill_with_char(' ', datas, final_length);
