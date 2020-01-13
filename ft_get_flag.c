@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/04 12:01:27 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:26:20 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ t_struct get_flag(t_struct datas, const char *s, int i)
     if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
     {
         datas.flag[flags] = flag[j];
-        datas = get_int(datas, datas.flag[temp] + 2, s);
+		datas.flag[temp]++;
+        datas = get_int(datas, i + 2, s);
+		if (s[datas.flag[temp]] == '.')
+			datas.flag[temp]++;
     }
-    return (datas);
+	datas.flag[temp]++;
+	return (datas);
 }
 
 //faire un check dans la boucle de decrementation si s[tmp] == '.' et que ft_isdigit[tmp + 1]

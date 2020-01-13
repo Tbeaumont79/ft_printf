@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/04 12:01:23 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:26:20 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 			// si ca return -1 tu peux call le dispatcher avec la bonne index !
             datas = get_flag(datas, s, i);
             i = datas.flag[temp];
-            printf("i == %d et , s[i] == %c\n", i, s[i - 2]);
 //            printf("datas.flag[flag] :: %c, datas.flag[prec] -> %c datas.size_prec -> %d datas.size -> %d et s[i - 2] %c et i :: %d \n", datas.flag[flags], datas.flag[prec], datas.flag[size_prec], datas.flag[size], s[i], i);
 			
             if (!(i = ft_dispatcher(ap, datas, i - 1, s) + 1))
