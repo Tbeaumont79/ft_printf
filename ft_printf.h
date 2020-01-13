@@ -40,6 +40,7 @@ typedef struct		s_struct
 int     ft_buffer(char c, t_struct datas);
 void	ft_left_justify(t_struct datas, int len_arg);
 void	ft_right_justify(t_struct datas, int len_arg);
+void     fill_if_prec(t_struct datas, int len_arg, int prec_len);
 int		nb_len(long nb, int base);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s);

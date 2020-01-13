@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static void     fill_if_prec(t_struct datas, int len_arg, int prec_len)
+void     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {
 	while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
 	{
