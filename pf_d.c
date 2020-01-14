@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 13:05:56 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:29:16 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     boolean = 0;
     val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
+	return (0);
 	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue); 
     if (datas.flag[flags] == '0' && datas.flag[size] > 0)
         ft_left_justify(datas, ft_strlen(stringValue));

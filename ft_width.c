@@ -6,32 +6,20 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:17:30 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:29:18 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int ft_width(int val, char *str, int i, t_struct datas)
+t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
 {
-    int j;
-    int size;
-    int nb_zero;
-    int total_size;
+	int val;
 
-    size = nb_len(val, 10);
-    nb_zero = ft_atoi(&str[i]);
-    j = 0;
-    if (nb_zero > size)
-        total_size = nb_zero - size;
-    else
-        total_size = size - nb_zero;
-    while (total_size > 0)
-    {
-        ft_buffer('0', datas);
-        total_size--;
-    }
-
-    return (1);
+	val = 0;
+	if (s[i - 1] == datas.flag[flags] && s[i] == '*')
+		val = va_arg(ap, int);
+	printf("val == %d\n", val);
+	return (datas);
 }

@@ -6,20 +6,21 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 13:08:32 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:29:23 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-t_struct get_flag(t_struct datas, const char *s, int i)
+t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 {
-    static char flag[4] = {'-', '0', '.', '*'};
+    static char flag[2] = {'-', '0'}; // je retire le . et * car je le traite autrement !
     int j;
     int tmp;
     int size_of_flag_array;
 
+	(void)ap;
     j = 0;
     tmp = 0;
     datas.flag[temp] = i;
@@ -36,7 +37,13 @@ t_struct get_flag(t_struct datas, const char *s, int i)
     }
     while (j < size_of_flag_array && s[i + 1] != flag[j])
         j++;
-    if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]))
+	if (s[i + 1] == flag[j] && s[i + 2] == '*')
+	{
+		datas.flag[flags] = flag[j];
+		datas = ft_width(ap, datas, s, i + 2);
+		datas.flag[temp]++;
+	}
+	if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]))
     {
         datas.flag[flags] = flag[j];
         datas.flag[temp]++;
