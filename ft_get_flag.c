@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/13 14:10:33 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:08:32 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_struct get_flag(t_struct datas, const char *s, int i)
         {
             datas.flag[prec] = s[tmp];
             datas = get_int(datas, tmp + 1, s);
+			break ;
         }
         tmp++;
     }

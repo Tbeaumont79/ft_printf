@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/03 15:01:27 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/14 11:35:51 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_struct
 
 int     ft_buffer(char c, t_struct datas);
 void	ft_left_justify(t_struct datas, int len_arg);
-void	ft_right_justify(t_struct datas, int len_arg);
+void	ft_right_justify(t_struct datas, int len_arg, int prec_len);
 void     fill_if_prec(t_struct datas, int len_arg, int prec_len);
 int		nb_len(long nb, int base);
 int		ft_parse(va_list ap, t_struct datas, const char *s);
