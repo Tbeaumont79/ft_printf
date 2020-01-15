@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 12:32:35 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 13:00:08 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 		if (s[tmp] == '.')
             datas.flag[prec] = s[tmp];
         if (s[tmp] == '.' && ft_isdigit(s[tmp + 1]))
+		{
             datas = get_int(datas, tmp + 1, s);
+			datas.flag[temp]++;
+		}
 		tmp++;
     }
     while (j < size_of_flag_array && s[i + 1] != flag[j])
@@ -52,8 +55,6 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
         datas.flag[flags] = flag[j];
 		datas.flag[temp]++;
         datas = get_int(datas, i + 2, s);
-		if (s[datas.flag[temp]] == '.')
-			datas.flag[temp]++;
     }
 	datas.flag[temp]++;
 	if (s[i + 3] == '.' && s[i + 4] == '*')
