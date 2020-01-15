@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:00:10 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/22 16:54:58 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 08:13:43 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char *test_1(int i, ...)
 		str[size] = va_arg(argptr, int);
 		size++;
 	}
-	va_end(argptr);
 	return (str);
 }
 int main(int ac, char **av)

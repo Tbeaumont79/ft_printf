@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 16:29:23 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 10:48:47 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,17 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
     int tmp;
     int size_of_flag_array;
 
-	(void)ap;
     j = 0;
     tmp = 0;
     datas.flag[temp] = i;
     size_of_flag_array = ft_strlen(flag);
     while (s[tmp])
     {
-        if (s[tmp] == '.' && ft_isdigit(s[tmp + 1]))
-        {
+		if (s[tmp] == '.')
             datas.flag[prec] = s[tmp];
+        if (s[tmp] == '.' && ft_isdigit(s[tmp + 1]))
             datas = get_int(datas, tmp + 1, s);
-			break ;
-        }
-        tmp++;
+		tmp++;
     }
     while (j < size_of_flag_array && s[i + 1] != flag[j])
         j++;
@@ -41,9 +38,11 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	{
 		datas.flag[flags] = flag[j];
 		datas = ft_width(ap, datas, s, i + 2);
+		if (s[i + 2] == '*')
+			datas.flag[temp]++;
 		datas.flag[temp]++;
 	}
-	if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]))
+	if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]) && s[i + 2] != '*')
     {
         datas.flag[flags] = flag[j];
         datas.flag[temp]++;
@@ -57,6 +56,11 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 			datas.flag[temp]++;
     }
 	datas.flag[temp]++;
+	if (s[i + 3] == '.' && s[i + 4] == '*')
+	{
+		datas = ft_width(ap, datas, s, i + 3);
+		datas.flag[temp]++;
+	}
 	return (datas);
 }
 

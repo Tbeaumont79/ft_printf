@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 16:29:22 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 11:06:33 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-   ft_printf("0*d :: %0*d\n", 12);
    printf("-1.5 : %-1.5dbonjour\n", 12);
    printf("01.5 : %01.5dbonjour\n", 12);
    printf("-5.1 : %-5.1dbonjour\n", 12);
@@ -37,6 +36,9 @@ int main(int ac, char **av)
    printf("-10.5 : %-10.5dbonjour\n", 12);
    printf("010.5 : %010.5dbonjour\n", 12);
    printf("\n--------------------------------\n");
+   ft_printf("0*d : %0*dbonjour\n", 10, 12);
+   ft_printf("0*.*d : %0*.*dbonjour\n", 10, 5, 12);
+   ft_printf("010.5d : %010.5dbonjour\n", 12);
    ft_printf("-1.5 : %-1.5dbonjour\n", 12);
    ft_printf("01.5 : %01.5dbonjour\n", 12);
    ft_printf("-5.1 : %-5.1dbonjour\n", 12);
