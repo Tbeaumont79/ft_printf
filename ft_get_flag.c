@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 10:48:47 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:32:35 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	if (s[i + 3] == '.' && s[i + 4] == '*')
 	{
 		datas = ft_width(ap, datas, s, i + 3);
-		datas.flag[temp]++;
+		datas.flag[temp] += 2;
 	}
 	return (datas);
 }
