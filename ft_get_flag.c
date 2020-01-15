@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 13:00:08 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:17:27 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
             datas = get_int(datas, tmp + 1, s);
 			datas.flag[temp]++;
 		}
+		if (s[tmp] == '.' && s[tmp + 1] == '*')
+			datas.flag[temp]++;
 		tmp++;
     }
     while (j < size_of_flag_array && s[i + 1] != flag[j])
@@ -42,7 +44,7 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 		datas.flag[flags] = flag[j];
 		datas = ft_width(ap, datas, s, i + 2);
 		if (s[i + 2] == '*')
-			datas.flag[temp]++;
+			datas.flag[temp] += 2;	
 		datas.flag[temp]++;
 	}
 	if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]) && s[i + 2] != '*')
@@ -53,17 +55,12 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
     if (s[i + 1] == flag[j] && ft_isdigit(s[i + 2]))
     {
         datas.flag[flags] = flag[j];
-		datas.flag[temp]++;
         datas = get_int(datas, i + 2, s);
     }
-	datas.flag[temp]++;
-	if (s[i + 3] == '.' && s[i + 4] == '*')
-	{
-		datas = ft_width(ap, datas, s, i + 3);
-		datas.flag[temp] += 2;
-	}
+
 	return (datas);
 }
+// CHECK SI s[i + 1] == '.' et s[i + 2] == '*' check si s[i + 3] == '.' et s[i + 4] == '*' puis faire un max de test
 
 //faire un check dans la boucle de decrementation si s[tmp] == '.' et que ft_isdigit[tmp + 1]
 //alors prec == 1 et datas.flag[size_prec == get_int(datas, tmp + 1, s) ] et comme ca tu soustrait ca a la valeur des autres flag and its done

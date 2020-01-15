@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 13:09:25 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:17:29 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_printf(const char *s, ...)
 	va_end(ap);
 	return (0);
 }
-/*
 static void test_all_flag()
 {
 printf("FOR d :: ---------------------------\n");
@@ -55,14 +54,14 @@ printf("FOR d :: ---------------------------\n");
 	printf("-10.5u : %-10.5ubonjour\n", 12);
 	printf("0*u : %0*ubonjour\n",10, 12);
 	printf("-*u : %-*ubonjour\n",10, 12);
-printf("\n ---------MY-PRINTF---------- \n");
-printf("FOR d :: ---------------------------\n");
-   ft_printf("-1.5 : %-1.5dbonjour\n", 12);
-   ft_printf("01.5 : %01.5dbonjour\n", 12);
-   ft_printf("-5.1 : %-5.1dbonjour\n", 12);
-   ft_printf("05.2 : %05.2dbonjour\n", 12);
-   ft_printf("-10.5 : %-10.5dbonjour\n", 12);
-   ft_printf("010.5 : %010.5dbonjour\n", 12);
+	printf("\n ---------MY-PRINTF---------- \n");
+	printf("FOR d :: ---------------------------\n");
+	ft_printf("-1.5 : %-1.5dbonjour\n", 12);
+	ft_printf("01.5 : %01.5dbonjour\n", 12);
+	ft_printf("-5.1 : %-5.1dbonjour\n", 12);
+	ft_printf("05.2 : %05.2dbonjour\n", 12);
+	ft_printf("-10.5 : %-10.5dbonjour\n", 12);
+	ft_printf("010.5 : %010.5dbonjour\n", 12);
 	ft_printf("FOR x :: ---------------------------\n");
 	ft_printf("0*.*x : %0*.*xbonjour\n",10, 5, 12);
 	ft_printf("-*.*x : %-*.*xbonjour\n",10, 5, 12);
@@ -85,13 +84,12 @@ printf("FOR d :: ---------------------------\n");
 	ft_printf("0*u : %0*ubonjour\n",10, 12);
 	ft_printf("-*u : %-*ubonjour\n",10, 12);
 }
-*/
 int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	ft_printf("%s\n", "bonjour");
-   //ft_printf("other test1 ft_printf: %.4d\n", 12);
+	test_all_flag();
+	//ft_printf("other test1 ft_printf: %.4d\n", 12);
    //ft_printf("other test2 ft_printf: %00.4d\n", 12);
 	return (0);
 }

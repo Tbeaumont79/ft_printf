@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 12:28:13 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:17:28 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
     int j;
     int prec_len;
     char *stringValue;
-    int boolean;
 
+	printf("TEST\n");
     // need to check if it WORK 
     (void)s;
     j = 0;
-    boolean = 0;
     val = va_arg(ap, int);
     stringValue = ft_itoa_base(val, 10);
 	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue); 
