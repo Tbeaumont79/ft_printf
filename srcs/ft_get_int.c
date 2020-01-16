@@ -6,12 +6,13 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:24 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 13:26:44 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:15:08 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
+
 
 t_struct get_int(t_struct datas, int tmp, const char *s)
 {

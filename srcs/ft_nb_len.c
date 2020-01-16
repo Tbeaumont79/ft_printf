@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test1.c                                            :+:      :+:    :+:   */
+/*   ft_nb_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 13:00:10 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 08:13:43 by thbeaumo         ###   ########.fr       */
+/*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 08:15:19 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-char *test_1(int i, ...)
+int		nb_len(long nb, int base)
 {
-	va_list argptr;
-	va_start(argptr, i);
-	char *str;
 	int size;
-
-	size = 0;
-	if (!(str = (char *)malloc(sizeof(char ) * (i + 1))))
-		return (0);
-	while (size < i)
+	
+	size = 0;	
+	if (nb < 0)
 	{
-		str[size] = va_arg(argptr, int);
+		size++;
+		nb = ft_abs(nb);
+	}
+	if (nb == 0)
+		size++;
+	while (nb > 0)
+	{
+		nb = nb / base;
 		size++;
 	}
-	return (str);
-}
-int main(int ac, char **av)
-{
-	char *s = test_1(ac - 1, av[1][0], av[2][0], av[3][0]);
-	printf("%s\n",s);
-	return (0);
+	return (size);
 }

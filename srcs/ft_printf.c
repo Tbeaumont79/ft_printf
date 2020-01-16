@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_c.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:35 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:17:39 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 15:31:20 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-int pf_c(va_list ap, t_struct datas, int i, const char *s)
+int		ft_printf(const char *s, ...)
 {
-    int val;
-    int j;
-    (void)s;
-
-    j = 0;
-    val = va_arg(ap, int);
-    ft_buffer(val, datas);
-    return (i);
+	va_list ap;
+	va_start(ap, s);
+	t_struct datas;
+	int size_buf;
+	
+	
+    ft_bzero(datas.buf, BUFF_SIZE);
+	size_buf = ft_parse(ap, datas, s);
+	va_end(ap);
+	return (size_buf);
 }
+

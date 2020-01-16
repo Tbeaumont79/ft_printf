@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_lower.c                                     :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:19:24 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:19:25 by thbeaumo         ###   ########.fr       */
+/*   Created: 2020/01/02 17:18:01 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 08:13:24 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-#include "libft/libft.h"
-#include "ft_printf.h"
 
-char *string_lower(char *s)
+int		ft_abs(int nb)
 {
-    int i;
-
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] >= 'A' && s[i] <= 'Z')
-            s[i] += 32;
-        i++;
-    }
-    return (s);
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }

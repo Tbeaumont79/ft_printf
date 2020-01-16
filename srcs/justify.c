@@ -6,12 +6,12 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/14 13:26:15 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:17:00 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
 void     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {

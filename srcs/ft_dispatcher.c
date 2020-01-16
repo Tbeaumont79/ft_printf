@@ -6,12 +6,13 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:33:55 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/11/07 20:25:29 by bod              ###   ########.fr       */
+/*   Updated: 2020/01/16 14:02:55 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
+
 
 int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 {
@@ -24,7 +25,7 @@ int		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 	size = ft_strlen(conv);
 	while (j < size)
 	{
-		if (conv[j] == s[i + 1])
+		if (conv[j] == s[i])
 			break ;
 		j++;
 	}

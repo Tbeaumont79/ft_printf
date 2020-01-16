@@ -6,12 +6,12 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:20 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 12:18:06 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:18:27 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
 int pf_XU(va_list ap, t_struct datas, int i, const char *s)
 {

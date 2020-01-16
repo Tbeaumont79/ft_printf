@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_width.c                                         :+:      :+:    :+:   */
+/*   string_lower.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 14:17:31 by thbeaumo         ###   ########.fr       */
+/*   Created: 2020/01/02 17:19:24 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 08:18:40 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
+char *string_lower(char *s)
 {
-	int val;
-	if (s[i] == '.' && s[i + 1] == '*')
-	{
-		val = va_arg(ap, int);
-		datas.flag[size_prec] = val;
-	}
-	if (s[i - 1] == datas.flag[flags] && s[i] == '*')
-	{
-		val = va_arg(ap, int);
-		datas.flag[size] = val;
-	}
-	return (datas);
+    int i;
+
+    i = 0;
+    while (s[i])
+    {
+        if (s[i] >= 'A' && s[i] <= 'Z')
+            s[i] += 32;
+        i++;
+    }
+    return (s);
 }

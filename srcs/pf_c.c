@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nb_len.c                                        :+:      :+:    :+:   */
+/*   pf_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:18:35 by thbeaumo         ###   ########.fr       */
+/*   Created: 2020/01/02 17:17:35 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 08:17:07 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-int		nb_len(long nb, int base)
+int pf_c(va_list ap, t_struct datas, int i, const char *s)
 {
-	int size;
-	
-	size = 0;	
-	if (nb < 0)
-	{
-		size++;
-		nb = ft_abs(nb);
-	}
-	if (nb == 0)
-		size++;
-	while (nb > 0)
-	{
-		nb = nb / base;
-		size++;
-	}
-	return (size);
+    int val;
+    int j;
+    (void)s;
+
+    j = 0;
+    val = va_arg(ap, int);
+    ft_buffer(val, datas);
+    return (i);
 }

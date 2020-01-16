@@ -6,11 +6,12 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:19 by thbeaumo          #+#    #+#             */
-/*   Updated: 2019/10/20 18:11:31 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:14:54 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../headers/ft_printf.h"
+
 
 char	*ft_itoa_base(long long nb, int base)
 {

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 12:40:18 by thbeaumo         ###   ########.fr       */
+/*   Created: 2020/01/02 17:17:27 by thbeaumo          #+#    #+#             */
+/*   Updated: 2020/01/16 15:38:42 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
-int main()
+
+t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
 {
-	printf("test : %.5s", "bonjour");
-	return 0;
+	int val;
+	if (s[i] == '*')
+	{
+		val = va_arg(ap, int);
+		if (i > 0 && s[i - 1] == '.')
+			datas.flag[size_prec] = val;
+		else
+			datas.flag[size] = val;
+	}
+	if (datas.flag[size_prec] || datas.flag[size])
+		datas.flag[temp]++;
+	return (datas);
 }

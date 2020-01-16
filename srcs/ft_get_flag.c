@@ -6,17 +6,45 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/15 14:17:27 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:38:39 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
+
+static t_struct check_for_size(va_list ap, t_struct datas, const char *s)
+{
+	datas = (s[datas.flag[temp]] == '*' ?
+		   	ft_width(ap, datas, s, datas.flag[temp]) : datas);
+	datas = (ft_isdigit(s[datas.flag[temp]]) ?
+		   	get_int(datas, datas.flag[temp], s) : datas);
+	return (datas);
+}
 
 t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 {
-    static char flag[2] = {'-', '0'}; // je retire le . et * car je le traite autrement !
-    int j;
+	static char flag[2] = {'-', '0'};
+	int j;
+	
+	j = 0;
+	datas.flag[temp] = i + 1;
+	datas = check_for_size(ap, datas, s);
+	while (flag[j] != s[datas.flag[temp]])
+		j++;
+	datas.flag[flags] = (flag[j] == s[datas.flag[temp]] ? flag[j] : '\0');
+	datas.flag[temp] += (flag[j] == s[datas.flag[temp]] ? 1 : 0);
+	datas = check_for_size(ap, datas, s);
+	datas.flag[prec] = (s[datas.flag[temp]] == '.' ? '.' : '\0');
+	datas.flag[temp] += (s[datas.flag[temp]] == '.' ? 1 : 0);
+	datas = check_for_size(ap, datas, s);
+	return (datas);
+}
+/*
+t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
+{
+    static char flag[2] = {'-', '0'};
+   	int j;
     int tmp;
     int size_of_flag_array;
 
@@ -44,7 +72,7 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 		datas.flag[flags] = flag[j];
 		datas = ft_width(ap, datas, s, i + 2);
 		if (s[i + 2] == '*')
-			datas.flag[temp] += 2;	
+			datas.flag[temp]++;	
 		datas.flag[temp]++;
 	}
 	if (s[i + 1] == flag[j] && !ft_isdigit(s[i + 2]) && s[i + 2] != '*')
@@ -57,9 +85,16 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
         datas.flag[flags] = flag[j];
         datas = get_int(datas, i + 2, s);
     }
-
+	if (s[i + 1] == '.' && s[i + 2] == '*')
+		datas.flag[temp]++;
+	if (s[i + 3] == '.' && s[i + 4] == '*')
+		datas.flag[temp]++;
+	if ((!datas.flag[flags] && !datas.flag[prec]) || s[datas.flag[temp]] == '*')
+		datas.flag[temp]++;
+	if (s[datas.flag[temp]] == '%')
+		datas.flag[temp]++;
 	return (datas);
-}
+}*/
 // CHECK SI s[i + 1] == '.' et s[i + 2] == '*' check si s[i + 3] == '.' et s[i + 4] == '*' puis faire un max de test
 
 //faire un check dans la boucle de decrementation si s[tmp] == '.' et que ft_isdigit[tmp + 1]

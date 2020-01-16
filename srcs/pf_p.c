@@ -6,12 +6,12 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:05 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/02 17:19:07 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:17:39 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../Libft/libft.h"
+#include "../headers/ft_printf.h"
 
 int pf_p(va_list ap, t_struct datas, int i, const char *s)
 {
