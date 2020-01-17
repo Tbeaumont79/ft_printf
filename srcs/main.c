@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 13:47:43 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 14:37:20 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ printf("FOR d :: ---------------------------\n");
    printf("-10.5 : %-10.5dbonjour\n", 12);
    printf("010.5 : %010.5dbonjour\n", 12);
    printf("10d : %10dbonjour\n", 12);
+   printf("0*.*d : %0*.*d\n", -5 , 10, 12);
 	printf("FOR x :: ---------------------------\n");
 	printf("0*.*x : %0*.*xbonjour\n",10, 5, 12);
 	printf("-*.*x : %-*.*xbonjour\n",10, 5, 12);
@@ -66,6 +67,7 @@ printf("FOR d :: ---------------------------\n");
 	ft_printf("-10.5 : %-10.5dbonjour\n", 12);
 	ft_printf("010.5 : %010.5dbonjour\n", 12);
 	ft_printf("10d : %10dbonjour\n", 12);
+	ft_printf("0*.*d : %0*.*d\n", -5 , 10, 12);
 	ft_printf("FOR x :: ---------------------------\n");
 	ft_printf("0*.*x : %0*.*xbonjour\n",10, 5, 12);
 	ft_printf("-*.*x : %-*.*xbonjour\n",10, 5, 12);
