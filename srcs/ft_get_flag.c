@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/16 15:38:39 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 11:02:38 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 static t_struct check_for_size(va_list ap, t_struct datas, const char *s)
 {
 	datas = (s[datas.flag[temp]] == '*' ?
-		   	ft_width(ap, datas, s, datas.flag[temp]) : datas);
-	datas = (ft_isdigit(s[datas.flag[temp]]) ?
-		   	get_int(datas, datas.flag[temp], s) : datas);
+		   	datas = ft_width(ap, datas, s, datas.flag[temp]) : datas);
+	datas = (ft_isdigit(s[datas.flag[temp]]) && s[datas.flag[temp]] != '0' ?
+		   	datas = get_int(datas, datas.flag[temp], s) : datas);
 	return (datas);
 }
 
 t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 {
-	static char flag[2] = {'-', '0'};
+	static char flagi[3] = {'0', '-'};
 	int j;
 	
 	j = 0;
 	datas.flag[temp] = i + 1;
 	datas = check_for_size(ap, datas, s);
-	while (flag[j] != s[datas.flag[temp]])
+	while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
 		j++;
-	datas.flag[flags] = (flag[j] == s[datas.flag[temp]] ? flag[j] : '\0');
-	datas.flag[temp] += (flag[j] == s[datas.flag[temp]] ? 1 : 0);
+	datas.flag[flags] = (s[datas.flag[temp]] == flagi[j] ? s[datas.flag[temp]] : '\0');
+	datas.flag[temp] += (s[datas.flag[temp]] == flagi[j] ? 1 : 0);
 	datas = check_for_size(ap, datas, s);
 	datas.flag[prec] = (s[datas.flag[temp]] == '.' ? '.' : '\0');
 	datas.flag[temp] += (s[datas.flag[temp]] == '.' ? 1 : 0);

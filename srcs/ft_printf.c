@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/16 15:31:20 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 07:19:09 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_printf(const char *s, ...)
 	int size_buf;
 	
 	
-    ft_bzero(datas.buf, BUFF_SIZE);
+    ft_bzero(datas.buf, 1);
 	size_buf = ft_parse(ap, datas, s);
 	va_end(ap);
 	return (size_buf);
