@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 11:02:38 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:45:30 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static t_struct check_for_size(va_list ap, t_struct datas, const char *s)
 		   	datas = ft_width(ap, datas, s, datas.flag[temp]) : datas);
 	datas = (ft_isdigit(s[datas.flag[temp]]) && s[datas.flag[temp]] != '0' ?
 		   	datas = get_int(datas, datas.flag[temp], s) : datas);
+	datas.flag[size] = datas.flag[size] > 0 ? datas.flag[size] : 0;
+	datas.flag[size_prec] = datas.flag[size_prec] > 0 ?
+	   	datas.flag[size_prec] : 0;
 	return (datas);
 }
 
@@ -29,6 +32,8 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	
 	j = 0;
 	datas.flag[temp] = i + 1;
+	datas.flag[size] = 0;
+	datas.flag[size_prec] = 0;
 	datas = check_for_size(ap, datas, s);
 	while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
 		j++;

@@ -1,5 +1,7 @@
 #!/bin/bash
-
-gcc -Wall -Wextra -Werror *.c ../libftprintf.a ../headers/ft_printf.h
+cd ../
+make re
+cd -
+gcc -Wall -Wextra -Werror -fsanitize=address *.c ../libftprintf.a ../headers/ft_printf.h
 ./a.out
 

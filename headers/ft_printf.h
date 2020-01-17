@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/16 16:06:42 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 09:43:32 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ t_struct get_int(t_struct datas, int tmp, const char *s);
 char	*string_lower(char *s);
 void	ft_display_buf(char *buf);
 char	*ft_itoa_base(long long nb, int base);
+void	fill_size(t_struct datas, int len_arg);
 #endif

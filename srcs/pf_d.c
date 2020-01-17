@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 10:35:53 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:49:11 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	fill_size(t_struct datas, int len_arg)
 		ft_buffer(' ', datas);
 		datas.flag[size]--;
 	}
+	while (datas.flag[size_prec] - len_arg > 0)
+	{
+		ft_buffer('0', datas);
+		datas.flag[size_prec]--;
+	}
 }
 
 int pf_d(va_list ap, t_struct datas, int i, const char *s)
@@ -46,6 +51,9 @@ int pf_d(va_list ap, t_struct datas, int i, const char *s)
 	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue);
 	((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0))
 	 && datas.flag[size] > 0 ?
+	 fill_size(datas, (int)ft_strlen(stringValue)) : 0);
+	((!datas.flag[flags] && (datas.flag[size] == 0))
+	 && datas.flag[size_prec] > 0 ?
 	 fill_size(datas, (int)ft_strlen(stringValue)) : 0);
     if (datas.flag[flags] == '0')
         ft_left_justify(datas, ft_strlen(stringValue));
