@@ -6,18 +6,20 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 14:37:20 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 11:13:19 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
-
+/*
 static void test_all_flag()
 {
 	printf("-----------------BASIC---Test-------------------------\n");
 	printf("FOR d :: ---------------------------\n");
 	printf("bonjour %d \n", 12);
+	printf("%d\n", 12);
+	printf("%7d\n", 12);
 	printf("-1.5 : %-1.5dbonjour\n", 12);
 	printf("01.5 : %01.5dbonjour\n", 12);
 	printf("-5.1 : %-5.1dbonjour\n", 12);
@@ -60,9 +62,12 @@ static void test_all_flag()
 	printf("-*s : %-*s \n", 5, "bonjour");
 	printf("5s : %12s \n", "bonjour");
 	printf("*s : %*s \n", 12, "bonjour");
+	printf("double arg : %s%s\n", "bonjour", "paul");
 	printf("\n ---------MY-PRINTF---------- \n");
 	ft_printf("-----------------BASIC---Test-------------------------\n");
 	ft_printf("FOR d :: ---------------------------\n");
+	printf("return : %d\n",ft_printf("%d\n", 12));
+	printf("return : %d\n",ft_printf("%7d\n", 12));
 	printf("return : %d\n",ft_printf("-1.5 : %-1.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("01.5 : %01.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("-5.1 : %-5.1dbonjour\n", 12));
@@ -105,12 +110,15 @@ static void test_all_flag()
 	printf("return : %d\n",ft_printf("-*s : %-*s \n", 5, "bonjour"));
 	printf("return : %d\n",ft_printf("5s : %12s \n", "bonjour"));
 	printf("return : %d\n",ft_printf("*s : %*s \n", 12, "bonjour"));
+	printf("return : %d\n",ft_printf("double arg : %s%s\n", "bonjour", "paul"));
 	ft_printf("-*.*s : %-*.*s \n", 90, 5, "bonjour");
-}
+}*/
 int main()
 {
-	ft_printf(" check %.5d\n", 12);
-	printf(" check %.5d\n", 12);
-	test_all_flag();
+	printf("return %d\n", printf("%d", 12));
+	printf("return %d\n", printf("%d", -42));
+	printf("return %d\n", ft_printf("%d", 12));
+	printf("return %d\n", ft_printf("%d", -42));
+//	test_all_flag();
 	return 0;
 }

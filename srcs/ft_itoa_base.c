@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:19 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/16 08:14:54 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 10:36:19 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_itoa_base(long long nb, int base)
 	if (nb < 0 && base == 10)
 	{
 		str[0] = '-';
-		ft_abs(nb);
+		nb = ft_abs(nb);
 		lim = 1;
 	}
 	while (size > lim)

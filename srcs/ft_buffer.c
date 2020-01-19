@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 13:18:11 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 11:07:55 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void ft_display_buf(char *buf)
         }
         i++;
     }
-}
+} faire passer un index dans la fonction ft_buffer pour ajouter les element au fur et a mesure voir pour fix le printf("%5 bonjour "); !
 */
 int ft_buffer(char c, t_struct datas)
 {
 	(void)datas;
-	ft_putchar(c);	
+	ft_putchar(c);
     return (1);
 }

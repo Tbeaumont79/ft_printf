@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 13:52:34 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 11:07:56 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,17 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 	ft_bzero(datas.buf, ft_strlen(s) + 1);
 	while (s[i])
 	{
+		if (s[i] && s[i] != '%')
+			ft_buffer(s[i], datas);
 		if (s[i] == '%')
 		{
 			// si ca return -1 tu peux call le dispatcher avec la bonne index !
 			datas.flag[temp] = i;
             datas = get_flag(ap, datas, s, i);
             i = datas.flag[temp];
-            if (!(i = ft_dispatcher(ap, datas, i, s) + 1))
+            if (!(i = ft_dispatcher(ap, datas, i, s)))
 				return (i);
 		}
-		if (s[i] && s[i] != '%')
-			ft_buffer(s[i], datas);
 		i++;
 	}
 	return (i);
