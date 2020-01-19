@@ -6,28 +6,29 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 09:28:00 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 14:02:48 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-void     fill_if_prec(t_struct datas, int len_arg, int prec_len)
+t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {
 	while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
 	{
-		ft_buffer(' ', datas);
+		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;
 	}
 	while (prec_len > 0)
 	{
-		ft_buffer('0', datas);
+		datas = ft_buffer('0', datas);
 		prec_len--;
 	}
+	return (datas);
 }
 
-static void		fill_with_char(char c, t_struct datas, int final_length)
+t_struct		fill_with_char(char c, t_struct datas, int final_length)
 {
 	int j;
 	int tmp;
@@ -37,9 +38,10 @@ static void		fill_with_char(char c, t_struct datas, int final_length)
 	// pour le moment je mets 0 par supposition mais besoin de faire plus de test !
 	while (j < final_length)
 	{
-		ft_buffer(c, datas);
+		datas = ft_buffer(c, datas);
 		j++;
 	}
+	return (datas);
 }
 
 static int		ft_get_final_length(int len_arg, t_struct datas)
@@ -48,7 +50,7 @@ static int		ft_get_final_length(int len_arg, t_struct datas)
 			len_arg - datas.flag[size] : (datas.flag[size] - len_arg));
 }
 
-void	ft_left_justify(t_struct datas, int len_arg)
+t_struct	ft_left_justify(t_struct datas, int len_arg)
 {
 	int final_length;
 	int prec_len;
@@ -58,20 +60,21 @@ void	ft_left_justify(t_struct datas, int len_arg)
 	if (datas.flag[flags] == '0')
 	{
 		if (datas.flag[prec] == '.')
-			fill_if_prec(datas, len_arg, prec_len);
+			datas = fill_if_prec(datas, len_arg, prec_len);
 		else
-			fill_with_char('0', datas, final_length);
+			datas = fill_with_char('0', datas, final_length);
 	}
 	else
 	{
 		if (datas.flag[prec] == '.')
-			fill_if_prec(datas, len_arg, prec_len);
+			datas = fill_if_prec(datas, len_arg, prec_len);
 		else
-			fill_with_char(' ', datas, final_length);
+			datas = fill_with_char(' ', datas, final_length);
 	}
+	return (datas);
 }
 
-void	ft_right_justify(t_struct datas, int len_arg, int prec_len)
+t_struct	ft_right_justify(t_struct datas, int len_arg, int prec_len)
 {
 	int final_length;
 	int size;
@@ -79,5 +82,6 @@ void	ft_right_justify(t_struct datas, int len_arg, int prec_len)
 	final_length = ft_get_final_length(len_arg, datas);
 	size = (prec_len > 0 ? final_length - prec_len : final_length);
 	if (datas.flag[flags] == '-')
-		fill_with_char(' ', datas, size);
+		datas = fill_with_char(' ', datas, size);
+	return (datas);
 }

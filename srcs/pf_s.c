@@ -6,14 +6,14 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 09:45:34 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/19 15:07:37 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-int pf_s(va_list ap, t_struct datas, int i, const char *s)
+t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 {
     char *val;
     int j;
@@ -21,23 +21,24 @@ int pf_s(va_list ap, t_struct datas, int i, const char *s)
     (void)s;
 
     j = 0;
+	datas.flag[temp] = i;
     if((val = va_arg(ap, char *)) == NULL)
     {
         val = "(null)";
-        ft_buffer('\0', datas);
-        return (i);
+        datas = ft_buffer('\0', datas);
+        return (datas);
     }
 	prec_len = (datas.flag[size_prec] > 0 ?
 		   	datas.flag[size_prec] : (int)ft_strlen(val));
-	((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0))
-	 && datas.flag[size] > 0 ?
-	 fill_size(datas, (int)ft_strlen(val)) : 0);
+	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
+	 && datas.flag[size] > 0))
+		datas = fill_size(datas, (int)ft_strlen(val));
     while (val[j])
 	{
 		while (j < prec_len)
-			ft_buffer(val[j++], datas);
+			datas = ft_buffer(val[j++], datas);
 		if (j >= prec_len)
 			break ;
 	}
-    return (i);
+    return (datas);
 }
