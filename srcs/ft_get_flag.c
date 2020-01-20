@@ -6,19 +6,20 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/17 13:45:30 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/20 12:43:25 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
-
+// check if it get the good value !!
 static t_struct check_for_size(va_list ap, t_struct datas, const char *s)
 {
 	datas = (s[datas.flag[temp]] == '*' ?
 		   	datas = ft_width(ap, datas, s, datas.flag[temp]) : datas);
-	datas = (ft_isdigit(s[datas.flag[temp]]) && s[datas.flag[temp]] != '0' ?
-		   	datas = get_int(datas, datas.flag[temp], s) : datas);
+	if (ft_isdigit(s[datas.flag[temp]]) || (s[datas.flag[temp]] == '0' &&
+			   	datas.flag[flags] == '0'))
+		datas = get_int(datas, datas.flag[temp], s);
 	datas.flag[size] = datas.flag[size] > 0 ? datas.flag[size] : 0;
 	datas.flag[size_prec] = datas.flag[size_prec] > 0 ?
 	   	datas.flag[size_prec] : 0;
@@ -34,6 +35,8 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	datas.flag[temp] = i + 1;
 	datas.flag[size] = 0;
 	datas.flag[size_prec] = 0;
+	if (s[datas.flag[temp]] == '0')
+		datas.flag[flags] = s[datas.flag[temp]];
 	datas = check_for_size(ap, datas, s);
 	while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
 		j++;

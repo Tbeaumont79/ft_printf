@@ -7,6 +7,7 @@ SOURCES = ft_printf.c \
 			pf_s.c \
 			ft_dispatcher.c \
 			ft_itoa_base.c \
+			ft_neg_itoa.c \
 			ft_buffer.c \
 			pf_d.c \
 			ft_abs.c \

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:12 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 13:54:00 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/20 07:46:19 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_struct pf_u(va_list ap, t_struct datas, int i, const char *s)
     j = 0;
 	datas.flag[temp] = i;
     nb = va_arg(ap, unsigned long long int);
-	stringValue = ft_itoa_base(nb, 10);
+	stringValue = ft_itoa_base(datas, nb, 10);
 	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue);
 	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
 	 && datas.flag[size] > 0))
