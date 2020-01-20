@@ -49,8 +49,8 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 		neg_str[sizes] = tab[nb % base];
 		nb = nb / base;
 	}
-	if (!datas.flag[prec] || datas.flag[flags] != '0')
-		datas = ft_buffer('-', datas);
+    if ((!datas.flag[flags] && !datas.flag[prec]) || datas.flag[flags] == '-')
+        datas = ft_buffer('-', datas);
 	while (neg_str[i])
 	{
 		datas = ft_buffer(neg_str[i], datas);
@@ -74,9 +74,9 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
 	{
 		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
 			return (datas);
-		if (datas.flag[prec] == '.' || datas.flag[flags] == '0')
-			datas = ft_buffer('-', datas);
-		datas = fill_if_neg(datas, sizes);
+	    if (datas.flag[prec] == '.' || datas.flag[flags] == '0')
+		    datas = ft_buffer('-', datas);
+        datas = fill_if_neg(datas, sizes);
 		nb = ft_abs(nb);
 		return (display_neg_str(datas, neg_str, nb, prec_len));
 	}

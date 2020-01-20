@@ -35,12 +35,13 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	datas.flag[temp] = i + 1;
 	datas.flag[size] = 0;
 	datas.flag[size_prec] = 0;
-	if (s[datas.flag[temp]] == '0')
-		datas.flag[flags] = s[datas.flag[temp]];
+    while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
+        j++;
+	datas.flag[flags] = (s[datas.flag[temp]] == flagi[j] ? s[datas.flag[temp]] : '\0');
 	datas = check_for_size(ap, datas, s);
 	while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
 		j++;
-	datas.flag[flags] = (s[datas.flag[temp]] == flagi[j] ? s[datas.flag[temp]] : '\0');
+	datas.flag[flags] = (s[datas.flag[temp]] == flagi[j] ? s[datas.flag[temp]] : datas.flag[flags]);
 	datas.flag[temp] += (s[datas.flag[temp]] == flagi[j] ? 1 : 0);
 	datas = check_for_size(ap, datas, s);
 	datas.flag[prec] = (s[datas.flag[temp]] == '.' ? '.' : '\0');

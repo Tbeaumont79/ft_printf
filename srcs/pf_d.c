@@ -51,9 +51,8 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 	datas.flag[temp] = i;
 	val = va_arg(ap, int);
 	stringValue = ft_itoa_base(datas, val, 10);
-	//changez ft_itoa pour qu'il prenne t_struct pour gere les negatifs :) 
 	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue);
-	if (val > 0)
+    if (val >= 0)
 	{
 		if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
 					&& datas.flag[size] > 0))
