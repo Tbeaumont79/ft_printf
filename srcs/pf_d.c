@@ -26,7 +26,8 @@ t_struct fill_right_justify_prec(t_struct datas, int len_arg, int prec_len)
 
 t_struct	fill_size(t_struct datas, int len_arg)
 {
-	while (datas.flag[size] - len_arg > 0)
+	while (datas.flag[size] - len_arg > 0 &&
+            datas.flag[size] - len_arg > datas.flag[size_prec] - len_arg)
 	{
 		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;

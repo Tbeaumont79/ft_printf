@@ -22,7 +22,7 @@ t_struct pf_c(va_list ap, t_struct datas, int i, const char *s)
 	datas.flag[temp] = i;
     j = 0;
     val = va_arg(ap, int);
-	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
+    if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
 	 && datas.flag[size] > 0))
 	 datas = fill_size(datas, 1);
     datas = ft_buffer(val, datas);
