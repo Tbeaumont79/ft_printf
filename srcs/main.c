@@ -31,6 +31,7 @@ static void d()
 	printf("return :: %d\n", printf("10d : %10dbonjour\n", 12));
 	printf("return :: %d\n", printf("0*.*d : %0*.*d\n", -5, 10, 12));
 	printf("return :: %d\n", printf("05d with neg : %05d\n", -12));
+	printf("return :: %d\n", printf("05d with neg : %05.8d\n", -12));
 	printf("return :: %d\n", printf("-5d with neg : %-5d\n", -12));
 	printf("return :: %d\n", printf("05d with neg : %05d\n", 12));
 	printf("\n ---------MY-PRINTF---------- \n");
@@ -41,7 +42,9 @@ static void d()
 	printf("return : %d\n",ft_printf("basic 0 :: %d\n", 0));
 	printf("return : %d\n",ft_printf("basic 7 0 :: %7d\n", 0));
 	printf("return : %d\n", ft_printf("05d with neg : %05d\n", -12));
+	printf("return : %d\n", printf("05.8d with neg : %05.8d\n", -12));
 	printf("return : %d\n", ft_printf("-5d with neg : %-5d\n", -12));
+	printf("return : %d\n", ft_printf("-5.8d with neg : %-5.8d\n", -12));
 	printf("return : %d\n", ft_printf("05d with neg : %05d\n", 12));
 	printf("return : %d\n",ft_printf("-1.5 : %-1.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("01.5 : %01.5dbonjour\n", 12));

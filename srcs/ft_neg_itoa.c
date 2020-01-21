@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../headers/ft_printf.h"
 #include "../Libft/libft.h"
 
@@ -18,7 +17,8 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
 {
 	int prec_len;
 
-	prec_len = datas.flag[size_prec] - sizes;
+	prec_len = datas.flag[size_prec] > sizes ?
+        datas.flag[size_prec] - sizes : sizes - datas.flag[size_prec];
 	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
 				&& datas.flag[size] > 0))
 		datas = fill_size(datas, sizes);
@@ -31,6 +31,7 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
 		datas = fill_right_justify_prec(datas, sizes, prec_len);
 	return (datas);
 }
+
 t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 {
 	char *tab;
@@ -49,7 +50,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 		neg_str[sizes] = tab[nb % base];
 		nb = nb / base;
 	}
-    if ((!datas.flag[flags] && !datas.flag[prec]) || datas.flag[flags] == '-')
+    if ((!datas.flag[flags] && !datas.flag[prec]) || (datas.flag[flags] == '-' && !datas.flag[prec]))
         datas = ft_buffer('-', datas);
 	while (neg_str[i])
 	{
