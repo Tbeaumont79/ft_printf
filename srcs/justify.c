@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 14:02:48 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:51:26 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_struct		fill_with_char(char c, t_struct datas, int final_length)
 static int		ft_get_final_length(int len_arg, t_struct datas)
 {
 	return (len_arg > datas.flag[size] ? 
-			len_arg - datas.flag[size] : (datas.flag[size] - len_arg));
+			0 : (datas.flag[size] - len_arg));
 }
 
 t_struct	ft_left_justify(t_struct datas, int len_arg)
@@ -77,11 +77,13 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 t_struct	ft_right_justify(t_struct datas, int len_arg, int prec_len)
 {
 	int final_length;
-	int size;
-	
+	int sizes;
+
 	final_length = ft_get_final_length(len_arg, datas);
-	size = (prec_len > 0 ? final_length - prec_len : final_length);
+	sizes = (prec_len > 0 ? final_length - prec_len : final_length);
 	if (datas.flag[flags] == '-')
-		datas = fill_with_char(' ', datas, size);
+	{
+		datas = fill_with_char(' ', datas, sizes);
+	}
 	return (datas);
 }

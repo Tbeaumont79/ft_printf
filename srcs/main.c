@@ -6,54 +6,83 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 14:58:04 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:51:01 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
+//check si datas de size < 0 alors datas.flag[flags] == '-' !! 
 
 static void d()
 {
+	printf("010.5d %010.5d\n", 14);
+	ft_printf("010.5d %010.5d\n", 14);
+	printf("05.10d %05.10d\n", 14);
+	ft_printf("05.10d %05.10d\n", 14);
+	printf(".10d %.10d\n", 14);
+	ft_printf(".10d %.10d\n", 14);
+	printf("-10.5d %-10.5d\n", 14);
+	ft_printf("-10.5d %-10.5d\n", 14);
+	printf("-5.d %-5.de\n", 14);
+	ft_printf("-5.d %-5.de\n", 14);
+	printf("-5.1d %-5.1de\n", -14);
+	ft_printf("-5.1d %-5.1de\n", -14);
+	printf("5.1d %-5.1de\n", 14);
+	ft_printf("5.1d %-5.1de\n", 14);
+	printf(".6d %.6d\n", -3);
+	ft_printf(".6d %.6d\n", -3);
+	printf("10.5d %10.5d\n", -216);
+	ft_printf("10.5d %10.5d\n", -216);
+	printf("8.3d %8.3d\n", -8473);	
+	ft_printf("8.3d %8.3d\n", -8473);
+	printf("3.7d %3.7d\n", -2375);
+	ft_printf("3.7d %3.7d\n", -2375);
+	printf("-8.5d %-8.5d\n",34);
+	ft_printf("-8.5d %-8.5d\n",34);
+	/*
 	printf("-----------------BASIC---Test-------------------------\n");
 	printf("FOR d :: ---------------------------\n");
+	printf("return :: %d\n", printf("bonjour -7d %-7d \n", -14));
+	printf("return : %d\n",ft_printf("bonjour -7d :: %-7d\n", -14));
+	printf("return :: %d\n", printf("test1 -4d %-4d \n", -94827));
+	printf("return : %d\n",ft_printf("test 1 -4d :: %-4de\n", -94827));
 	printf("return :: %d\n", printf("bonjour %d \n", 12));
+	printf("return : %d\n",ft_printf("basic 12 :: %d\n", 12));
 	printf("return :: %d\n", printf("basic 12 :: %d\n", 12));
 	printf("return :: %d\n", printf("basic 0 :: %d\n", 0));
+	printf("return : %d\n",ft_printf("basic 7 0 :: %7d\n", 0));
 	printf("return :: %d\n", printf("%7d\n", 12));
 	printf("return :: %d\n", printf("-1.5 : %-1.5dbonjour\n", 12));
 	printf("return :: %d\n", printf("01.5 : %01.5dbonjour\n", 12));
+	printf("return : %d\n",ft_printf("01.5 : %01.5dbonjour\n", 12));
 	printf("return :: %d\n", printf("-5.1 : %-5.1dbonjour\n", 12));
 	printf("return :: %d\n", printf("05.2 : %05.2dbonjour\n", 12));
+	printf("return : %d\n",ft_printf("05.2 : %05.2dbonjour\n", 12));
 	printf("return :: %d\n", printf("-10.5 : %-10.5dbonjour\n", 12));
 	printf("return :: %d\n", printf("010.5 : %010.5dbonjour\n", 12));
 	printf("return :: %d\n", printf("10d : %10dbonjour\n", 12));
 	printf("return :: %d\n", printf("0*.*d : %0*.*d\n", -5, 10, 12));
 	printf("return :: %d\n", printf("05d with neg : %05d\n", -12));
 	printf("return :: %d\n", printf("05d with neg : %05.8d\n", -12));
+	printf("return : %d\n", printf("05.8d with neg : %05.8d\n", -12));
 	printf("return :: %d\n", printf("-5d with neg : %-5d\n", -12));
 	printf("return :: %d\n", printf("05d with neg : %05d\n", 12));
 	printf("\n ---------MY-PRINTF---------- \n");
 	ft_printf("-----------------BASIC---Test-------------------------\n");
 	ft_printf("FOR d :: ---------------------------\n");
-	printf("return : %d\n",ft_printf("basic 12 :: %d\n", 12));
-	printf("return : %d\n",ft_printf("basic 7 12 :: %7d\n", 12));
-	printf("return : %d\n",ft_printf("basic 0 :: %d\n", 0));
-	printf("return : %d\n",ft_printf("basic 7 0 :: %7d\n", 0));
 	printf("return : %d\n", ft_printf("05d with neg : %05d\n", -12));
-	printf("return : %d\n", printf("05.8d with neg : %05.8d\n", -12));
 	printf("return : %d\n", ft_printf("-5d with neg : %-5d\n", -12));
 	printf("return : %d\n", ft_printf("-5.8d with neg : %-5.8d\n", -12));
 	printf("return : %d\n", ft_printf("05d with neg : %05d\n", 12));
 	printf("return : %d\n",ft_printf("-1.5 : %-1.5dbonjour\n", 12));
-	printf("return : %d\n",ft_printf("01.5 : %01.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("-5.1 : %-5.1dbonjour\n", 12));
-	printf("return : %d\n",ft_printf("05.2 : %05.2dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("-10.5 : %-10.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("010.5 : %010.5dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("10d : %10dbonjour\n", 12));
 	printf("return : %d\n",ft_printf("0*.*d : %0*.*d\n", -5, 10, 12));
+	*/
 }
 /*
    static void test_all_flag()
