@@ -15,79 +15,74 @@
 
 t_struct	fill_if_neg(t_struct datas, int sizes)
 {
-	int prec_len;
+    int prec_len;
 
-	prec_len = datas.flag[size_prec] > sizes ?
+    prec_len = datas.flag[size_prec] > sizes ?
         datas.flag[size_prec] - sizes : 0;
-	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
-				&& datas.flag[size] > 0))
-	{
-		datas = fill_size(datas, sizes);
-	}
-	if ((!datas.flag[flags] && (datas.flag[size] == 0)
-				&& datas.flag[size_prec] > 0))
-	{
-		datas = fill_size(datas, sizes);
-	}
-	if (datas.flag[flags] == '0')
-	{
-		datas = ft_left_justify(datas, sizes);	
-	}
-	return (datas);
+    if ((!datas.flag[flags] && datas.flag[size] > 0) ||
+            (!datas.flag[flags] && datas.flag[size_prec] > 0))
+    {
+        sizes--;
+        datas = fill_size(datas, sizes);
+    }
+    if (datas.flag[flags] == '0')
+        datas = ft_left_justify(datas, sizes);	
+    return (datas);
 }
 
 t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 {
-	char *tab;
-	int sizes;
-	int base;
-	int i;
-	int tmp;
+    char *tab;
+    int sizes;
+    int base;
+    int i;
+    int tmp;
 
-	base = 10;
-	sizes = nb_len(nb, base);
-	tab = "0123456789ABCDEF";
-	neg_str[sizes] = '\0';
-	i = 0;
-	tmp = sizes;
-	while (sizes > 0)
-	{
-		sizes--;
-		neg_str[sizes] = tab[nb % base];
-		nb = nb / base;
-	}
-	if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
-		datas = fill_right_justify_prec(datas, tmp + 1, l);
-    if ((!datas.flag[flags] && !datas.flag[prec]) || (datas.flag[flags] == '-' && !datas.flag[prec]))
+    base = 10;
+    sizes = nb_len(nb, base);
+    tab = "0123456789ABCDEF";
+    neg_str[sizes] = '\0';
+    i = 0;
+    tmp = sizes;
+    while (sizes > 0)
+    {
+        sizes--;
+        neg_str[sizes] = tab[nb % base];
+        nb = nb / base;
+    }
+    if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
+        datas = fill_right_justify_prec(datas, tmp, l);
+    if ((!datas.flag[flags] && !datas.flag[prec]) ||
+            (datas.flag[flags] == '-' && !datas.flag[prec]) || datas.flag[size] - tmp >= datas.flag[size_prec] - tmp)
         datas = ft_buffer('-', datas);
-	while (neg_str[i])
-	{
-		datas = ft_buffer(neg_str[i], datas);
-		i++;
-	}
-	if (datas.flag[flags] == '-')
-		datas = ft_right_justify(datas, tmp + 1, l);
-	free(neg_str);
-	return (datas);
+    while (neg_str[i])
+    {
+        datas = ft_buffer(neg_str[i], datas);
+        i++;
+    }
+    if (datas.flag[flags] == '-')
+        datas = ft_right_justify(datas, tmp, l);
+    free(neg_str);
+    return (datas);
 }
 
 t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
 {
-	int lim;
-	int sizes;
-	char *neg_str;
+    int lim;
+    int sizes;
+    char *neg_str;
 
-	lim = 0;
-	sizes = nb_len(nb, base);
-	if (nb < 0 && base == 10)
-	{
-		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
-			return (datas);
-	    if (datas.flag[prec] == '.' || datas.flag[flags] == '0')
-		    datas = ft_buffer('-', datas);
+    lim = 0;
+    sizes = nb_len(nb, base);
+    if (nb < 0 && base == 10)
+    {
+        if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
+            return (datas);
+        if ((datas.flag[prec] == '.' || datas.flag[flags] == '0') && datas.flag[size] <= prec_len)
+            datas = ft_buffer('-', datas);
         datas = fill_if_neg(datas, sizes);
-		nb = ft_abs(nb);
-		return (display_neg_str(datas, neg_str, nb, prec_len));
-	}
-	return (datas);
+        nb = ft_abs(nb);
+        return (display_neg_str(datas, neg_str, nb, prec_len));
+    }
+    return (datas);
 }

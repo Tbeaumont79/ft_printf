@@ -67,13 +67,9 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 	{
 		if ((!datas.flag[flags] && datas.flag[size] > 0) ||
 				(!datas.flag[flags] && datas.flag[size_prec] > 0))
-		{
 			datas = fill_size(datas, len);
-		}
 		if (datas.flag[flags] == '0')
-		{
 			datas = ft_left_justify(datas, len);
-		}
 		if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
 			datas = fill_right_justify_prec(datas, len, prec_len);
 		while (stringValue[j] && len > 0)
