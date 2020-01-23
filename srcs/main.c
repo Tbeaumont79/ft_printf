@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/22 14:51:01 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/23 10:38:55 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 static void d()
 {
+	printf("basic neg :: %d\n", -14);
+	ft_printf("basic neg :: %d\n", -14);
 	printf("010.5d %010.5d\n", 14);
 	ft_printf("010.5d %010.5d\n", 14);
 	printf("05.10d %05.10d\n", 14);
@@ -39,8 +41,14 @@ static void d()
 	ft_printf("8.3d %8.3d\n", -8473);
 	printf("3.7d %3.7d\n", -2375);
 	ft_printf("3.7d %3.7d\n", -2375);
+	printf("010.5d %010.5d\n", -1543);
+	ft_printf("010.5d %010.5d\n", -1543);
+	printf("-10.5 %-10.5d\n", -1540);
+	ft_printf("-10.5 %-10.5d\n", -1540);
 	printf("-8.5d %-8.5d\n",34);
 	ft_printf("-8.5d %-8.5d\n",34);
+	printf("-5.10d %-5.10d\n",35);
+	ft_printf("-5.10d %-5.10d\n", 35);
 	/*
 	printf("-----------------BASIC---Test-------------------------\n");
 	printf("FOR d :: ---------------------------\n");
