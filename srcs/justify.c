@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/22 14:51:26 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:28:00 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 	{
 		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;
+	}
+	if (datas.flag[neg] == 0)
+	{
+		datas = ft_buffer('-', datas);
+		datas.flag[neg] = 1;
 	}
 	while (prec_len > 0)
 	{
