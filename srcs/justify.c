@@ -15,16 +15,14 @@
 
 t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {
-	while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
+    datas.flag[size] -= datas.flag[neg] == 1;
+    while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
 	{
 		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;
 	}
-	if (datas.flag[neg] == 0)
-	{
-		datas = ft_buffer('-', datas);
-		datas.flag[neg] = 1;
-	}
+    if (datas.flag[neg] == 1)
+        datas = ft_buffer('-', datas);
 	while (prec_len > 0)
 	{
 		datas = ft_buffer('0', datas);
@@ -60,14 +58,18 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 	int final_length;
 	int prec_len;
 
-	prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
-	final_length = ft_get_final_length(len_arg, datas);
-	if (datas.flag[flags] == '0')
+    prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
+    final_length = ft_get_final_length(len_arg, datas);
+    if (datas.flag[flags] == '0')
 	{
 		if (datas.flag[prec] == '.')
 			datas = fill_if_prec(datas, len_arg, prec_len);
 		else
-			datas = fill_with_char('0', datas, final_length);
+        {
+            if (datas.flag[neg] == 1)
+                datas = ft_buffer('-', datas);
+            datas = fill_with_char('0', datas, final_length);
+        }
 	}
 	else
 	{
@@ -87,8 +89,6 @@ t_struct	ft_right_justify(t_struct datas, int len_arg, int prec_len)
 	final_length = ft_get_final_length(len_arg, datas);
 	sizes = (prec_len > 0 ? final_length - prec_len : final_length);
 	if (datas.flag[flags] == '-')
-	{
 		datas = fill_with_char(' ', datas, sizes);
-	}
 	return (datas);
 }

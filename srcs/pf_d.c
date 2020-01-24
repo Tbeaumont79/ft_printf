@@ -15,8 +15,9 @@
 
 t_struct fill_right_justify_prec(t_struct datas, int len_arg, int prec_len)
 {
-	(void)len_arg;
-	prec_len += datas.flag[neg] == 1 ? 1 : 0;
+    (void)len_arg;
+    if (datas.flag[neg] == 1)
+        prec_len++;
 	while (prec_len > 0)
 	{
 		datas = ft_buffer('0', datas);

@@ -39,18 +39,16 @@ t_struct	fill_size_neg(t_struct datas, int len_arg)
 
 t_struct	fill_if_neg(t_struct datas, int sizes)
 {
-    int prec_len;
-
-    prec_len = datas.flag[size_prec] > sizes ?
-        datas.flag[size_prec] - sizes : 0;
+    sizes--;
     if ((!datas.flag[flags] && datas.flag[size] > 0) ||
             (!datas.flag[flags] && datas.flag[size_prec] > 0))
-    {
-        sizes--;
         datas = fill_size_neg(datas, sizes);
-    }
     if (datas.flag[flags] == '0')
+    {
+        if (datas.flag[neg] != 1)
+            datas.flag[neg] = 1;
         datas = ft_left_justify(datas, sizes);
+    }
     return (datas);
 }
 
@@ -104,6 +102,7 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
     lim = 0;
     sizes = nb_len(nb, base);
 	datas.flag[neg] = 0;
+    prec_len = datas.flag[size_prec] > sizes - 1 ? datas.flag[size_prec] - (sizes - 1) : 0;
     if (nb < 0 && base == 10)
     {
         if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
