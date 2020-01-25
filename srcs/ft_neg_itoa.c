@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/23 14:27:59 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/25 15:44:35 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_struct	fill_size_neg(t_struct datas, int len_arg)
 
 t_struct	fill_if_neg(t_struct datas, int sizes)
 {
-    sizes--;
-    if ((!datas.flag[flags] && datas.flag[size] > 0) ||
+	sizes--;
+	if ((!datas.flag[flags] && datas.flag[size] > 0) ||
             (!datas.flag[flags] && datas.flag[size_prec] > 0))
         datas = fill_size_neg(datas, sizes);
     if (datas.flag[flags] == '0')
@@ -79,7 +79,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 	}
     if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
 	{
-		tmp += datas.flag[size] > datas.flag[size_prec] ? 1 : 0;
+		tmp += datas.flag[size] > datas.flag[size_prec] && datas.flag[size_prec] - tmp - 1 ? 1 : 0;
         datas = fill_right_justify_prec(datas, tmp, l);
 	}
     while (neg_str[i])
@@ -88,7 +88,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
         i++;
     }
     if (datas.flag[flags] == '-')
-        datas = ft_right_justify(datas, tmp + 1, l);
+        datas = ft_right_justify(datas, tmp, l);
     free(neg_str);
     return (datas);
 }

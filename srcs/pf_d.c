@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/23 14:10:55 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/25 15:17:22 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 t_struct fill_right_justify_prec(t_struct datas, int len_arg, int prec_len)
 {
     (void)len_arg;
-    if (datas.flag[neg] == 1)
-        prec_len++;
+	prec_len += datas.flag[neg] == 1;
+	prec_len -= datas.flag[neg] == 1 && datas.flag[size_prec] <= len_arg;
 	while (prec_len > 0)
 	{
 		datas = ft_buffer('0', datas);

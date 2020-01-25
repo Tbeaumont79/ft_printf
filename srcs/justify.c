@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/23 14:28:00 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/25 15:44:35 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {
-    datas.flag[size] -= datas.flag[neg] == 1;
     while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
 	{
 		datas = ft_buffer(' ', datas);
@@ -59,8 +58,9 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 	int prec_len;
 
     prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
-    final_length = ft_get_final_length(len_arg, datas);
-    if (datas.flag[flags] == '0')
+	len_arg += datas.flag[neg] == 1;
+	final_length = ft_get_final_length(len_arg, datas);
+	if (datas.flag[flags] == '0')
 	{
 		if (datas.flag[prec] == '.')
 			datas = fill_if_prec(datas, len_arg, prec_len);
@@ -88,6 +88,8 @@ t_struct	ft_right_justify(t_struct datas, int len_arg, int prec_len)
 
 	final_length = ft_get_final_length(len_arg, datas);
 	sizes = (prec_len > 0 ? final_length - prec_len : final_length);
+	sizes -= (datas.flag[neg] == 1 && datas.flag[size_prec] > len_arg)
+		|| (datas.flag[size_prec] == 0 && datas.flag[neg] == 1);
 	if (datas.flag[flags] == '-')
 		datas = fill_with_char(' ', datas, sizes);
 	return (datas);
