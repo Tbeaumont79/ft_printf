@@ -13,21 +13,23 @@
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-
 t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
 {
-	int val;
-	if (s[i] == '*')
-	{
-		val = va_arg(ap, int);
-		if (i > 0 && s[i - 1] == '.')
-			datas.flag[size_prec] = val;
-		else
-			datas.flag[size] = val;
+    int val;
+    if (s[i] == '*')
+    {
+        val = va_arg(ap, int);
+        if (i > 0 && s[i - 1] == '.')
+            datas.flag[size_prec] = val;
+        else
+            datas.flag[size] = val;
         if (val < 0) // check pour voir si ca s'applique a toutes les convertions ! 
+        {
             datas.flag[flags] = '-';
+            datas.flag[size] = -val;
+        }            
+        if (datas.flag[size_prec] || datas.flag[size])
+            datas.flag[temp]++;
     }
-	if (datas.flag[size_prec] || datas.flag[size])
-		datas.flag[temp]++;
-	return (datas);
+    return (datas);
 }
