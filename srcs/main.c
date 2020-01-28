@@ -15,6 +15,28 @@
 
 //check si datas de size < 0 alors datas.flag[flags] == '-' !! 
 
+static void s()
+{
+	ft_printf("FOR s  :: ---------------------------\n");
+	printf("my return : %d\n",ft_printf("simple test : %s \n", "bonjour"));
+    printf("printf return %d\n", printf("simple test : %s \n", "bonjour"));
+	printf("my return : %d\n",ft_printf(".5s : %.5s \n", "bonjour"));
+    printf("printf return %d\n", printf(".5s : %.5s \n", "bonjour"));
+	printf("my return : %d\n",ft_printf(".*s : %.*s \n", 5, "bonjour"));
+    printf("printf return %d\n", printf(".*s : %.*s \n", 5, "bonjour"));
+	printf("my return : %d\n",ft_printf("-10.5s : %-5.5s \n", "bonjour"));
+    printf("printf return %d\n", printf("-10.5s : %-5.5s \n", "bonjour"));
+	printf("my return : %d\n",ft_printf("-*.*s : %-10.5s \n", "bonjour"));
+    printf("printf return %d\n", printf("-*.*s : %-10.5s \n", "bonjour"));
+	printf("my return : %d\n",ft_printf("-*s : %-*s \n", 5, "bonjour"));
+    printf("printf return %d\n", printf("-*s : %-*s \n", 5, "bonjour"));
+	printf("my return : %d\n",ft_printf("5s : %12s \n", "bonjour"));
+    printf("printf return %d\n", printf("5s : %12s \n", "bonjour"));
+	printf("my return : %d\n",ft_printf("*s : %*s \n", 12, "bonjour"));
+    printf("printf return %d\n", printf("*s : %*s \n", 12, "bonjour"));
+	printf("my return : %d\n",ft_printf("double arg : %s%s\n", "bonjour", "paul"));
+}
+
 static void d()
 {
 	printf("basic neg :: %d\n", -14);
@@ -94,7 +116,8 @@ static void d()
 	   printf("return : %d\n",ft_printf("0*.*d : %0*.*d\n", -5, 10, 12));
 	   */
 }
-static void test_all_flag()
+
+/*static void test_all_flag()
 {
 	printf("FOR x :: ---------------------------\n");
 	printf("bonjour %x \n", 12);
@@ -156,28 +179,17 @@ static void test_all_flag()
 	printf("return : %d\n",ft_printf("-10.5u : %-10.5ubonjour\n", 12));
 	printf("return : %d\n",ft_printf("0*u : %0*ubonjour\n", 10, 12));
 	printf("return : %d\n",ft_printf("-*u : %-*ubonjour\n", 10, 12));
-	printf("return : %d\n",ft_printf("FOR s  :: ---------------------------\n"));
-	printf("return : %d\n",ft_printf("simple test : %s \n", "bonjour"));
-	printf("return : %d\n",ft_printf(".5s : %.5s \n", "bonjour"));
-	printf("return : %d\n",ft_printf(".*s : %.*s \n", 5, "bonjour"));
-	printf("return : %d\n",ft_printf("-10.5s : %-5.5s \n", "bonjour"));
-	printf("return : %d\n",ft_printf("-*.*s : %-10.5s \n", "bonjour"));
-	printf("return : %d\n",ft_printf("-*s : %-*s \n", 5, "bonjour"));
-	printf("return : %d\n",ft_printf("5s : %12s \n", "bonjour"));
-	printf("return : %d\n",ft_printf("*s : %*s \n", 12, "bonjour"));
-	printf("return : %d\n",ft_printf("double arg : %s%s\n", "bonjour", "paul"));
-	ft_printf("-*.*s : %-*.*s \n", 90, 5, "bonjour");
-}
 
+}
+*/
 int main(int ac, char **av)
 {
 	if (ac - 1 > 0)
 	{
 		if(av[1][0] == 'd')
-		{
-			test_all_flag();
 			d();
-		}
+        if(av[1][0] == 's')
+            s();
 	}
 	else
 		ft_putstr("You can use ./a.out d for instance");

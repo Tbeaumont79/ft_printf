@@ -31,17 +31,15 @@ static t_struct	ft_display_val(t_struct datas, char *val, int prec_len)
 
 t_struct	fill_size_s(t_struct datas, int len_arg)
 {
-	int prec_len;
+    int value;
 //si il y a une prec prendre la diff entre size et size_prec et mettre des spaces while > 0 
-	prec_len = datas.flag[size_prec] > len_arg &&
-	   	datas.flag[size] < datas.flag[size_prec] ?
-	   	datas.flag[size_prec] - len_arg : 0;
-	while (datas.flag[size] - len_arg > 0 && 
-			datas.flag[size] - len_arg > prec_len) 
-	{
-		datas = ft_buffer(' ', datas);
-		datas.flag[size]--;
-	}
+    
+    value = datas.flag[size] - len_arg > datas.flag[size_prec] - len_arg ? datas.flag[size] - len_arg : datas.flag[size_prec];    
+    while (value > 0 && datas.flag[size] > 0)
+    {
+        datas = ft_buffer(' ', datas);
+        value--;
+    }
 	return (datas);
 }
 
@@ -68,6 +66,7 @@ t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 	{
 		val = "(null)";
 		datas = ft_display_val(datas, val, prec_len);
+        printf("prec_len : %d\n", prec_len);
 		return (datas);
 	}
 	datas = ft_display_val(datas, val, prec_len);

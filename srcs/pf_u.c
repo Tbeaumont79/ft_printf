@@ -15,28 +15,34 @@
 
 t_struct pf_u(va_list ap, t_struct datas, int i, const char *s)
 {
-    unsigned long long int nb;
+    unsigned long long int val;
     char *stringValue;
     int j;
 	int prec_len;
+    int len;
     (void)s;
 
     j = 0;
 	datas.flag[temp] = i;
-    nb = va_arg(ap, unsigned long long int);
-	stringValue = ft_itoa_base(datas, nb, 10);
-	prec_len = datas.flag[size_prec] - (int)ft_strlen(stringValue);
-	if ((!datas.flag[flags] && (!datas.flag[prec] || datas.flag[size_prec] == 0)
-	 && datas.flag[size] > 0))
-	 datas = fill_size(datas, (int)ft_strlen(stringValue));
-	if (datas.flag[flags] == '0' && datas.flag[size] > 0)
-        ft_left_justify(datas, ft_strlen(stringValue));
-    if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
-        fill_right_justify_prec(datas, ft_strlen(stringValue), prec_len);
-    while (stringValue[j])
-        ft_buffer(stringValue[j++], datas);
-	if (datas.flag[flags] == '-')
-        ft_right_justify(datas, ft_strlen(stringValue), prec_len);
-
+    val = va_arg(ap, unsigned long long int);
+	stringValue = ft_itoa_base(datas, val, 10);	
+    len = (val == 0 && (datas.flag[prec] == '.' &&
+				datas.flag[size_prec] == 0) ? 0 : ft_strlen(stringValue));
+	prec_len = datas.flag[size_prec] - len;
+	if (val >= 0)
+	{
+		if ((!datas.flag[flags] && datas.flag[size] > 0) ||
+				(!datas.flag[flags] && datas.flag[size_prec] > 0))
+			datas = fill_size(datas, len);
+		if (datas.flag[flags] == '0')
+			datas = ft_left_justify(datas, len);
+		if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
+			datas = fill_right_justify_prec(datas, len, prec_len);
+		while (stringValue[j] && len > 0)
+			datas = ft_buffer(stringValue[j++], datas);
+		if (datas.flag[flags] == '-')
+			datas = ft_right_justify(datas, len, prec_len);
+		free(stringValue);
+	}
     return (datas);
 }
