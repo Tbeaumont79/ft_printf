@@ -15,6 +15,7 @@ SOURCES = ft_printf.c \
 			ft_abs.c \
 			pf_c.c \
 			pf_p.c \
+			pf_percent.c \
 			string_lower.c \
 			ft_width.c \
 			ft_nb_len.c \
