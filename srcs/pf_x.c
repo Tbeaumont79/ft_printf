@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/20 07:40:47 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:36:12 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ t_struct pf_x(va_list ap, t_struct datas, int i, const char *s)
             datas = ft_right_justify(datas, len, prec_len);
         free(stringValue);
     }
+	else
+		datas = handle_neg(datas, val, 16, prec_len);
     return (datas);
 }

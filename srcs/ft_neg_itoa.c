@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/25 15:44:35 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:45:23 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,19 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
     return (datas);
 }
 
-t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
+t_struct	display_neg_str(t_struct datas, char *neg_str, long long int nb, int base)
 {
     char *tab;
     int sizes;
-    int base;
     int i;
+	int l;
     int tmp;
 
-    base = 10;
-    sizes = nb_len(nb, base);
+   
+	if (base == 10)
+		nb = ft_abs(nb);
+	sizes = nb_len(nb, base);
+	l = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes - 1 : 0; 
     tab = "0123456789ABCDEF";
     neg_str[sizes] = '\0';
     i = 0;
@@ -79,9 +82,12 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
 	}
     if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
 	{
-		tmp += datas.flag[size] > datas.flag[size_prec] && datas.flag[size_prec] - tmp - 1 ? 1 : 0;
+		tmp += datas.flag[size] > datas.flag[size_prec] &&
+		   	datas.flag[size_prec] - tmp - 1 ? 1 : 0;
         datas = fill_right_justify_prec(datas, tmp, l);
 	}
+	if (datas.flag[conv] == 'x')
+		neg_str = string_lower(neg_str); 
     while (neg_str[i])
     {
         datas = ft_buffer(neg_str[i], datas);
@@ -92,25 +98,34 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int l)
     free(neg_str);
     return (datas);
 }
-
+// pour le %p verifier que c'est cast en unsigned long !
 t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
 {
     int lim;
     int sizes;
     char *neg_str;
+	(void)prec_len;
 
     lim = 0;
     sizes = nb_len(nb, base);
 	datas.flag[neg] = 0;
-    prec_len = datas.flag[size_prec] > sizes - 1 ? datas.flag[size_prec] - (sizes - 1) : 0;
     if (nb < 0 && base == 10)
     {
         if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
             return (datas);
         datas = fill_if_neg(datas, sizes);
         nb = ft_abs(nb);
-		prec_len = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes : 0; 
-        return (display_neg_str(datas, neg_str, nb, prec_len));
+        return (display_neg_str(datas, neg_str, nb, 10));
     }
+	if (nb < 0 && base == 16)
+	{
+		datas.flag[neg] = 1;
+		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
+			return (datas);
+        datas = fill_if_neg(datas, sizes);
+        nb = 4294967295 + nb + 1;
+		prec_len = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes : 0; 
+        return (display_neg_str(datas, neg_str, nb, 16));
+	}
     return (datas);
 }

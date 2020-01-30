@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/27 08:13:02 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:14:48 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ static void d()
 	ft_printf("-5.10d %-5.10d\n", 35);
 	printf("*.5d %*.5d \n", -5, 12);
 	ft_printf("*.5d %*.5d \n", -5, 12);
+	printf("INT MIN : %ld\n", -2147483648);
+	ft_printf("INT MIN : %d\n", -2147483648);
+	printf("INT MAX : %d\n", 2147483647);
+	ft_printf("INT MAX : %d\n", 2147483647);
+	printf("NEG INT %d\n", -154854);
+	ft_printf("NEG INT %d\n", -154854);
 	/*
 	   printf("-----------------BASIC---Test-------------------------\n");
 	   printf("FOR d :: ---------------------------\n");

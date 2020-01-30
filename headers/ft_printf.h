@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/23 10:08:47 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:15:56 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef enum		e_flags
     prec,
 	temp,
 	neg,
+	conv,
 }					t_flags;
 
 typedef struct		s_struct
@@ -35,7 +36,7 @@ typedef struct		s_struct
 	char *str;
 	char buf[4096];
 	int buf_index;
-	int flag[7];
+	int flag[8];
     size_t arg_len;
 }					t_struct;
 
