@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/30 15:14:48 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/01/31 12:06:24 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void s()
 	printf("my return : %d\n",ft_printf("*s : %*s \n", 12, "bonjour"));
     printf("printf return %d\n", printf("*s : %*s \n", 12, "bonjour"));
 	printf("my return : %d\n",ft_printf("double arg : %s%s\n", "bonjour", "paul"));
+	printf("printf return %d\n", printf("st9 %*.*s\n", 0, 50, "hey"));
+	ft_printf("my return : %d\n", printf("st9 %*.*s\n", 0, 50, "hey"));
 }
 
 static void d()
