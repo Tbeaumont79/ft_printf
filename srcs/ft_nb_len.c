@@ -13,11 +13,11 @@
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-int		nb_len(long nb, int base)
+int		nb_len(long long nb, int base)
 {
 	int size;
 	
-	size = 0;	
+	size = 0;
 	if (nb < 0)
 	{
 		size++;

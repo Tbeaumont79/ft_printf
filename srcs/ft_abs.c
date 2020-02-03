@@ -13,9 +13,7 @@
 #include "../headers/ft_printf.h"
 
 
-int		ft_abs(int nb)
+long long   ft_abs(long long nb)
 {
-	if (nb < 0)
-		return (-nb);
-	return (nb);
+	return (nb < 0 ? nb * -1 : nb);
 }

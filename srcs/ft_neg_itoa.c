@@ -52,7 +52,7 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
     return (datas);
 }
 
-t_struct	display_neg_str(t_struct datas, char *neg_str, long long int nb, int base)
+t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int base)
 {
     char *tab;
     int sizes;
@@ -60,11 +60,9 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long int nb, int ba
 	int l;
     int tmp;
 
-   
-	if (base == 10)
-		nb = ft_abs(nb);
-	sizes = nb_len(nb, base);
-	l = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes - 1 : 0; 
+    nb = ft_abs(nb);
+    sizes = nb_len(nb, base);
+    l = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes - 1 : 0; 
     tab = "0123456789ABCDEF";
     neg_str[sizes] = '\0';
     i = 0;
@@ -114,7 +112,6 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
         if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
             return (datas);
         datas = fill_if_neg(datas, sizes);
-        nb = ft_abs(nb);
         return (display_neg_str(datas, neg_str, nb, 10));
     }
 	if (nb < 0 && base == 16)
@@ -123,6 +120,7 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
 		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
 			return (datas);
         datas = fill_if_neg(datas, sizes);
+        nb = ft_abs(nb);
         nb = 4294967295 + nb + 1;
 		prec_len = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes : 0; 
         return (display_neg_str(datas, neg_str, nb, 16));

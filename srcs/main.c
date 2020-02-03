@@ -39,6 +39,38 @@ static void s()
 	ft_printf("my return : %d\n", printf("st9 %*.*s\n", 0, 50, "hey"));
 }
 
+static void x()
+{
+    printf("printf return : %d\n", printf("01.0x %01.0x\n", -1));
+    printf("my printf return : %d\n", ft_printf("01.0x %01.0x\n", -1));
+    printf("printf return : %d\n", printf("01.1x %01.1x\n", -1));
+    printf("my printf return : %d\n", ft_printf("01.1x %01.1x\n", -1));
+    printf("printf return : %d\n", printf("01.2x %01.2x\n", -1));
+    printf("my printf return : %d\n", ft_printf("01.2x %01.2x\n", -1));
+    printf("printf return : %d\n", printf("01.10x %01.10x\n", -1));
+    printf("my printf return : %d\n", ft_printf("01.10x %01.10x\n", -1));
+    printf("printf return : %d\n", printf("02.0x %02.0x\n", -1));
+    printf("my printf return : %d\n", ft_printf("02.0x %02.0x\n", -1));
+    printf("printf return : %d\n", printf("02.1x %02.1x\n", -1));
+    printf("my printf return : %d\n", ft_printf("02.1x %02.1x\n", -1));
+    printf("printf return : %d\n", printf("02.2x %02.2x\n", -1));
+    printf("my printf return : %d\n", ft_printf("02.2x %02.2x\n", -1));
+    printf("printf return : %d\n", printf("02.10x %02.10x\n", -1));
+    printf("my printf return : %d\n", ft_printf("02.10x %02.10x\n", -1));
+    printf("printf return : %d\n", printf("03.0x %03.0x\n", -1));
+    printf("my printf return : %d\n", ft_printf("03.0x %03.0x\n", -1));
+    printf("printf return : %d\n", printf("03.1x %03.1x\n", -1));
+    printf("my printf return : %d\n", ft_printf("03.1x %03.1x\n", -1));
+    printf("printf return : %d\n", printf("03.2x %03.2x\n", -1));
+    printf("my printf return : %d\n", ft_printf("03.2x %03.2x\n", -1));
+    printf("printf return : %d\n", printf("03.3x %03.3x\n", -1));
+    printf("my printf return : %d\n", ft_printf("03.3x %03.3x\n", -1));
+    printf("printf return : %d\n", printf("03.10x %03.10x\n", -1));
+    printf("my printf return : %d\n", ft_printf("03.10x %03.10x\n", -1));
+    printf("printf return : %d\n", printf("011.10x %011.10x\n", 2147483647));
+    printf("my printf return : %d\n", ft_printf("011.10x %011.10x\n", 2147483647));
+}
+
 static void d()
 {
 	printf("basic neg :: %d\n", -14);
@@ -198,6 +230,8 @@ int main(int ac, char **av)
 			d();
         if(av[1][0] == 's')
             s();
+        if(av[1][0] == 'x')
+            x();
 	}
 	else
 		ft_putstr("You can use ./a.out d for instance");
