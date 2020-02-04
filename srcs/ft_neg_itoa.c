@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/04 11:02:26 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 11:45:47 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_struct	fill_size_neg(t_struct datas, int len_arg)
 	}
 	if (prec_len > 0)
 	{
-		datas = ft_buffer('-', datas);
+		datas = datas.flag[neg] == 0 ? ft_buffer('-', datas) : datas;
 		datas.flag[neg] = 1;
 	}
 	while (prec_len > 0)
@@ -45,8 +45,9 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
         datas = fill_size_neg(datas, sizes);
     if (datas.flag[flags] == '0')
     {
-        if (datas.flag[neg] != 1)
+        if (datas.flag[neg] == 0)
             datas.flag[neg] = 1;
+		sizes += datas.flag[neg] == 2;
         datas = ft_left_justify(datas, sizes);
     }
     return (datas);
@@ -73,7 +74,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int base)
         neg_str[sizes] = tab[nb % base];
         nb = nb / base;
     }
-	if (datas.flag[neg] != 1)
+	if (datas.flag[neg] == 0)
 	{
 		datas = ft_buffer('-', datas);
 		datas.flag[neg] = 1;
@@ -116,10 +117,10 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
     }
 	if (nb < 0 && base == 16)
 	{
-		datas.flag[neg] = 1;
-        datas = fill_if_neg(datas, sizes);
+		datas.flag[neg] = 2;
         nb = 4294967295 + nb + 1;
 		sizes = nb_len(nb, base);
+        datas = fill_if_neg(datas, sizes);
 		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
 			return (datas);
 		prec_len = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes : 0; 

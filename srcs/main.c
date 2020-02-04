@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/04 10:44:57 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:29:17 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static void d()
 {
 	printf("basic neg :: %d\n", -14);
 	ft_printf("basic neg :: %d\n", -14);
+	printf("*d %*d\n", 0, 14);
+	ft_printf("*d %*d\n", 0, 14);
 	printf("010.5d %010.5d\n", 14);
 	ft_printf("010.5d %010.5d\n", 14);
 	printf("05.10d %05.10d\n", 14);

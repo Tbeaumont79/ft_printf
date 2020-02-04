@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/31 11:17:31 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 13:01:56 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 	len = (int)ft_strlen(val);
 	prec_len = (datas.flag[size_prec] > 0 ?
 			datas.flag[size_prec] : len);
-	prec_len = (datas.flag[prec] == '.' && datas.flag[size_prec] == 0 &&
-			datas.flag[size] == 0) ? 0 : prec_len;
+	prec_len = (datas.flag[prec] == '.' && datas.flag[size_prec] ==  0) ? 0 : prec_len;
+	if (prec_len == 0 && datas.flag[size_prec] == 0)
+		prec_len += len;
 	if ((datas.flag[prec] == '.' && datas.flag[size_prec] == 0))
 	{
 		while (datas.flag[size] > 0)

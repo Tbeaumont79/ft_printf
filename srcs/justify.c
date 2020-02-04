@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/25 15:44:35 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 13:21:15 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 		if (datas.flag[prec] == '.')
 			datas = fill_if_prec(datas, len_arg, prec_len);
 		else
+		{
+			printf("here\n");
 			datas = fill_with_char(' ', datas, final_length);
+		}
 	}
 	return (datas);
 }
