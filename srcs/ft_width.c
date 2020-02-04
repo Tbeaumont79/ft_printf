@@ -26,7 +26,7 @@ t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
 			if (s[i - 1] == '.')
 				datas.flag[size_prec] = val;
 			else
-				datas.flag[size] = 0;
+				datas.flag[size] = val;
 		}
 		if (val > 0)
 		{

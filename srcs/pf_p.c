@@ -27,12 +27,13 @@ t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
 	val = va_arg(ap, long long);
 	stringValue = ft_itoa_base(datas, val, 16);
 	stringValue = string_lower(stringValue);
-	len = (val == 0 && (datas.flag[prec] == '.' &&
-				datas.flag[size_prec] == 0) ? 0 : ft_strlen(stringValue));
-	prec_len = datas.flag[size_prec] - len;
-	if (val >= 0)
+    len = (int)ft_strlen(stringValue);
+    prec_len = (val == 0 && (datas.flag[prec] == '.' &&
+				datas.flag[size_prec] <= 0) ? 0 : datas.flag[size_prec] - (len + 2));
+    len = (datas.flag[prec] == '.' && datas.flag[size_prec] == 0) ? 0 : len;
+    if (val >= 0)
 	{
-		datas.flag[size] -= 2;
+		datas.flag[size] -= datas.flag[size] ? 2 : 0;
 		if (datas.flag[flags] == '0')
 		{
 			datas = ft_buffer('0', datas);
@@ -41,19 +42,28 @@ t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
 		}
 		else
 		{
-			if (datas.flag[size_prec] && datas.flag[size] == 0)
+			if (datas.flag[size] > len)
 			{
-				datas = ft_buffer('0', datas);
-				datas = ft_buffer('x', datas);
+			    datas = fill_size(datas, len);
+			    datas = ft_buffer('0', datas);
+			    datas = ft_buffer('x', datas);
 			}
-			datas = fill_size(datas, len);
-			if ()
-			{
-				datas = ft_buffer('0', datas);
-				datas = ft_buffer('x', datas);
-			}
+            else
+            {
+                if (datas.flag[size_prec] > 0)
+                {
+                    datas = ft_buffer('0', datas);
+				    datas = ft_buffer('x', datas);
+                }
+			    datas = fill_size(datas, len);
+                if (!datas.flag[size_prec])
+                {
+                    datas = ft_buffer('0', datas);
+				    datas = ft_buffer('x', datas);
+                }
+            }
 		}
-		while (stringValue[j] && len > 0)
+		while (stringValue[j] && len != 0)
 			datas = ft_buffer(stringValue[j++], datas);
 		free(stringValue);
 	}
