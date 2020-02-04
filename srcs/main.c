@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/31 12:06:24 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 10:44:57 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ static void s()
 
 static void x()
 {
+	printf("For x :: -------------------------\n");
+	printf("printf return : %d\n", printf("x %x\n", -1));
+	printf("my printf return : %d\n", ft_printf("x %x\n", -1));
     printf("printf return : %d\n", printf("01.0x %01.0x\n", -1));
     printf("my printf return : %d\n", ft_printf("01.0x %01.0x\n", -1));
     printf("printf return : %d\n", printf("01.1x %01.1x\n", -1));

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/30 14:45:23 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/04 11:02:26 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int base)
 	int l;
     int tmp;
 
-    nb = ft_abs(nb);
+    nb = base == 10 ?  ft_abs(nb) : nb;
     sizes = nb_len(nb, base);
     l = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes - 1 : 0; 
     tab = "0123456789ABCDEF";
@@ -103,7 +103,7 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
     int sizes;
     char *neg_str;
 	(void)prec_len;
-
+	
     lim = 0;
     sizes = nb_len(nb, base);
 	datas.flag[neg] = 0;
@@ -117,11 +117,11 @@ t_struct	handle_neg(t_struct datas, long long nb, int base, int prec_len)
 	if (nb < 0 && base == 16)
 	{
 		datas.flag[neg] = 1;
+        datas = fill_if_neg(datas, sizes);
+        nb = 4294967295 + nb + 1;
+		sizes = nb_len(nb, base);
 		if (!(neg_str = (char *)malloc(sizeof(char) * (sizes + 1))))
 			return (datas);
-        datas = fill_if_neg(datas, sizes);
-        nb = ft_abs(nb);
-        nb = 4294967295 + nb + 1;
 		prec_len = datas.flag[size_prec] > sizes ? datas.flag[size_prec] - sizes : 0; 
         return (display_neg_str(datas, neg_str, nb, 16));
 	}
