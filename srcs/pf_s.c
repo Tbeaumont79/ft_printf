@@ -15,73 +15,83 @@
 
 static t_struct	ft_display_val(t_struct datas, char *val, int prec_len)
 {
-	int j;
+    int j;
 
-	j = 0;
-	while (val[j])
-	{
-		if (j < prec_len)
-			datas = ft_buffer(val[j], datas);
-		j++;
-	}
-	return (datas);
+    j = 0;
+    while (val[j])
+    {
+        if (j < prec_len)
+            datas = ft_buffer(val[j], datas);
+        j++;
+    }
+    return (datas);
 }
 
-t_struct	fill_size_s(t_struct datas, int len_arg)
+t_struct	handle_flag(t_struct datas, char *val, int len)
 {
-	int value;
-	//si il y a une prec prendre la diff entre size et size_prec et mettre des spaces while > 0 
+    int i;
 
-	value = (datas.flag[size] > 0 && datas.flag[size_prec] > 0 &&
-			datas.flag[size_prec] && datas.flag[size] < len_arg ?
-			datas.flag[size] - datas.flag[size_prec] :
-			datas.flag[size] - len_arg);
-	while (value > 0)
-	{
-		datas = ft_buffer(' ', datas);
-		value--;
-	}
-	return (datas);
+    i = 0;
+    if (datas.flag[flags] == '0')
+    {
+        while (datas.flag[size]-- > len)
+            datas = ft_buffer('0', datas);
+    }
+    if (datas.flag[prec] == '.')
+    {
+        if (datas.flag[flags] != '-')
+        {
+            while (datas.flag[size]-- > len)
+                datas = ft_buffer(' ', datas);
+        }
+        datas.flag[size_prec] = len;
+        while (val[i] && datas.flag[size_prec] > 0)
+        {
+            datas = ft_buffer(val[i], datas);
+            i++;
+            datas.flag[size_prec]--;
+        }
+    }
+    else
+    {
+        if (len == 0)
+            return (datas);
+        datas = ft_display_val(datas, val, len);
+    }
+    if (datas.flag[flags] == '-')
+    {
+        while (datas.flag[size]-- > len)
+            datas = ft_buffer(' ', datas);
+    }
+    return (datas);
 }
 
 t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 {
-	char *val;
-	int j;
-	int len;
-	int prec_len;
-	(void)s;
+    char *val;
+    int j;
+    int len;
+    (void)s;
 
-	j = 0;
-	if (!(val = va_arg(ap, char *)))
-		val = "(null)";
-	datas.flag[temp] = i;
-	len = (int)ft_strlen(val);
-	prec_len = (datas.flag[size_prec] > 0 ?
-			datas.flag[size_prec] : len);
-	prec_len = (datas.flag[prec] == '.' && datas.flag[size_prec] ==  0) ? 0 : prec_len;
-	if (prec_len == 0 && datas.flag[size_prec] == 0)
-		prec_len += len;
-	if ((datas.flag[prec] == '.' && datas.flag[size_prec] == 0))
-	{
-		while (datas.flag[size] > 0)
-		{
-			datas = ft_buffer(' ', datas);
-			datas.flag[size]--;
-		}
-		return (datas);
-	}	
-	if ((datas.flag[size] && len - prec_len > 0))
-		datas.flag[size] += len - prec_len;
-	if (!datas.flag[flags] && datas.flag[size] > 0)
-		datas = fill_size_s(datas, len);
-	else
-	{
-		if (datas.flag[flags] == '0')
-			datas = ft_left_justify(datas, len);
-	}
-	datas = ft_display_val(datas, val, prec_len);
-	if (datas.flag[flags] == '-')
-		datas = ft_right_justify(datas, len, 0);
-	return (datas);
+    j = 0;
+    if (!(val = va_arg(ap, char *)))
+        val = "(null)";
+    datas.flag[temp] = i;
+    len = (int)ft_strlen(val);
+    if (datas.flag[size_prec] > 0)
+        len = len > datas.flag[size_prec] ? datas.flag[size_prec] : len;
+    if (datas.flag[prec] == '.' && datas.flag[size_prec] == 0)
+        len = 0;
+    if (datas.flag[flags])
+        datas = handle_flag(datas, val, len);
+    else
+    {
+        while (datas.flag[size]-- > len)
+            datas = ft_buffer(' ', datas);
+        if (len == 0)
+            return (datas);
+        else
+            datas = ft_display_val(datas, val, len);
+    }
+    return (datas);
 }
