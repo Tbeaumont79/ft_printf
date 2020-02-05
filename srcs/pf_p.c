@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:05 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/04 15:06:11 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/05 14:35:10 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
 	stringValue = string_lower(stringValue);
     len = (int)ft_strlen(stringValue);
     prec_len = (val == 0 && (datas.flag[prec] == '.' &&
-				datas.flag[size_prec] <= 0) ? 0 : datas.flag[size_prec] - (len + 2));
+				datas.flag[size_prec] == 0) ? 0 : datas.flag[size_prec] - (len + 2));
     len = (datas.flag[prec] == '.' && datas.flag[size_prec] == 0) ? 0 : len;
     if (val >= 0)
 	{
@@ -55,7 +55,7 @@ t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
                     datas = ft_buffer('0', datas);
 				    datas = ft_buffer('x', datas);
                 }
-			    datas = fill_size(datas, len);
+			    datas = fill_size(datas, prec_len);
                 if (!datas.flag[size_prec])
                 {
                     datas = ft_buffer('0', datas);

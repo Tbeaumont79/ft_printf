@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:02:15 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/04 13:01:56 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/05 17:09:59 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ t_struct	fill_size_s(t_struct datas, int len_arg)
 	int value;
 	//si il y a une prec prendre la diff entre size et size_prec et mettre des spaces while > 0 
 
-	value = (datas.flag[size_prec] && datas.flag[size] < len_arg ?
+	value = (datas.flag[size] > 0 && datas.flag[size_prec] > 0 &&
+			datas.flag[size_prec] && datas.flag[size] < len_arg ?
 			datas.flag[size] - datas.flag[size_prec] :
 			datas.flag[size] - len_arg);
 	while (value > 0)

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/04 14:29:17 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/05 14:50:01 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ static void s()
     printf("printf return %d\n", printf("*s : %*s \n", 12, "bonjour"));
 	printf("my return : %d\n",ft_printf("double arg : %s%s\n", "bonjour", "paul"));
 	printf("printf return %d\n", printf("st9 %*.*s\n", 0, 50, "hey"));
-	ft_printf("my return : %d\n", printf("st9 %*.*s\n", 0, 50, "hey"));
+	printf("my return : %d\n", ft_printf("st9 %*.*s\n", 0, 50, "hey"));
+	printf("printf return %d\n", printf("st9 %*.*s\n", 0, -50, "hey"));
+	printf("my return : %d\n", ft_printf("st9 %*.*s\n", 0, -50, "hey"));
 }
-
 static void x()
 {
 	printf("For x :: -------------------------\n");
@@ -80,6 +81,10 @@ static void d()
 	ft_printf("basic neg :: %d\n", -14);
 	printf("*d %*d\n", 0, 14);
 	ft_printf("*d %*d\n", 0, 14);
+	printf("*.*d %*.*d\n", 10, 10, 10);
+	ft_printf("*.*d %*.*d\n", 10, 10, 10);
+	printf("here *.*d %*.*d\n", -5, 5, 10);
+	ft_printf("here *.*d %*.*d\n", -5, 5, 10);
 	printf("010.5d %010.5d\n", 14);
 	ft_printf("010.5d %010.5d\n", 14);
 	printf("05.10d %05.10d\n", 14);
