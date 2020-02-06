@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 13:33:55 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/30 14:18:38 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/06 16:35:05 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ t_struct		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 	while (j < size)
 	{
 		if (conve[j] == s[i])
-		{
-			datas.flag[conv] = conve[j];
 			break ;
-		}
 		j++;
 	}
 	if (j >= 0 && j < size)
 		return (fct[j](ap, datas, i, s));
+	else
+		datas.flag[temp]++;
 	return (datas);
 }

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 13:55:49 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:08:10 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,17 @@ static int ft_get_flag(t_struct datas, const char *s, int i)
     return (i);
 }
 */
+int	is_conv(int i, const char *s)
+{
+	return (s[i] == 'x' || s[i] == 'X' || s[i] == 'd' ||
+		   	s[i] == 'i' || s[i] == 'c' || s[i] == 's' || s[i] == '%');
+}
 int ft_parse(va_list ap, t_struct datas, const char *s)
 {
 	int i;
 	int val;
 	int j;
+	int tmp;
 
 	j = 0;
 	i = 0;
@@ -90,7 +96,17 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 			datas = ft_buffer(s[i], datas);
 		if (s[i] == '%')
 		{
-			// si ca return -1 tu peux call le dispatcher avec la bonne index !
+			tmp = i + 1;
+			while (s[tmp])
+			{
+				if (is_conv(tmp, s))
+				{
+					datas.flag[conv] = s[tmp];
+					break ;
+				}
+				else
+					tmp++;
+			}
 			datas.flag[temp] = i;
             datas = get_flag(ap, datas, s, i);
             i = datas.flag[temp];

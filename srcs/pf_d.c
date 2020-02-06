@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/31 11:40:43 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/06 16:31:55 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 	datas.flag[temp] = i;
 	val = va_arg(ap, int);
 	stringValue = ft_itoa_base(datas, val, 10);
-	len = (val == 0 && (datas.flag[prec] == '.' &&
-				datas.flag[size_prec] == 0) ? 0 : ft_strlen(stringValue));
-	prec_len = datas.flag[size_prec] - len;
+	len = ((val == 0 && (datas.flag[prec] == '.' &&
+				datas.flag[size_prec] == 0)) ? 0 : ft_strlen(stringValue));
+	prec_len = datas.flag[size_prec] > len ? datas.flag[size_prec] - len : 0;
 	if (val >= 0)
 	{
 		if ((!datas.flag[flags] && datas.flag[size] > 0) ||
@@ -70,10 +70,12 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 			datas = ft_left_justify(datas, len);
 		if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
 			datas = fill_right_justify_prec(datas, len, prec_len);
-		while (stringValue[j] && len > 0)
+		while (stringValue[j] && !(val == 0 && datas.flag[prec] == '.' && datas.flag[size_prec] == 0))
 			datas = ft_buffer(stringValue[j++], datas);
+		len = len > datas.flag[size_prec] ? len : datas.flag[size_prec];
 		if (datas.flag[flags] == '-')
-			datas = ft_right_justify(datas, len, prec_len);
+			while (datas.flag[size]-- > len)
+				datas = ft_buffer(' ', datas);
 		free(stringValue);
 	}
 	else

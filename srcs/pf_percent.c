@@ -8,12 +8,7 @@ t_struct     fill_if_percent(t_struct datas)
         while (datas.flag[size]-- > 1)
             datas = ft_buffer('0', datas);
     }
-    if (datas.flag[prec] == '.')
-    {
-        while (datas.flag[size_prec]-- > 1)
-            datas = ft_buffer('0', datas);
-    }
-    if (datas.flag[prec] == '.' && datas.flag[flags] == '-')
+    if (datas.flag[prec] == '.' && datas.flag[flags] != '-')
     {
         while (datas.flag[size_prec]-- > 1)
             datas = ft_buffer('0', datas);

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/05 14:50:01 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:08:09 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,7 @@ static void d()
 
 }
 */
+// ameliorer le get_flag
 int main(int ac, char **av)
 {
 	if (ac - 1 > 0)
