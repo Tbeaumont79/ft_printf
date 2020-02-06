@@ -39,6 +39,10 @@ static void s()
 	printf("my return : %d\n", ft_printf("st9 %*.*s\n", 0, 50, "hey"));
 	printf("printf return %d\n", printf("st9 %*.*s\n", 0, -50, "hey"));
 	printf("my return : %d\n", ft_printf("st9 %*.*s\n", 0, -50, "hey"));
+	printf("printf return %d\n", printf("st9 %*.*se\n", -5, -5, "hello world"));
+	printf("printf return %d\n", printf("st9 %*.*se\n", -5, -5, "hello world"));
+	printf("my return : %d\n", ft_printf("st9 %*.*se\n", 11, 1, "hello world"));
+	printf("my return : %d\n", ft_printf("st9 %*.*se\n", 11, 1, "hello world"));
 }
 static void x()
 {

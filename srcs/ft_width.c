@@ -50,7 +50,7 @@ t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
             {
                 if (datas.flag[conv] == 's')
                 {
-                    datas.flag[size] = val;
+                    datas.flag[size] = -val;
                     datas.flag[temp]++;
                     return (datas);
                 }

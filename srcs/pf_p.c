@@ -13,59 +13,93 @@
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
+int     nb_len_hexa(unsigned long int val, int base)
+{
+    int len;
+
+    len = 0;
+    while (val >= (unsigned int long)base)
+    {
+        len++;
+        val /= base;
+    }
+    return (len + 1);
+}
+
+t_struct putnbr_base(unsigned long int val, char *tab, t_struct datas)
+{
+    if (val >= 16)
+        datas = putnbr_base(val / 16, tab, datas);
+    datas = ft_buffer(tab[val % 16], datas);
+    return (datas);
+}
+
+t_struct handle_flag_p(unsigned long int val, t_struct datas, char *tab, int l)
+{
+    if (datas.flag[size_prec] != '.')
+    {
+        datas = ft_buffer('0', datas);
+        datas = ft_buffer('x', datas);
+    }
+    if (datas.flag[flags] == '0')
+    {
+        while (datas.flag[size]-- > l)
+            datas = ft_buffer('0', datas);
+    }
+    if (datas.flag[prec] == '.')
+    {
+        if (datas.flag[flags] != '-')
+            while (datas.flag[size]-- > l)
+                datas = ft_buffer(' ', datas);
+        datas = ft_buffer('0', datas);
+        datas = ft_buffer('x', datas);
+        while (datas.flag[size_prec]-- > l)
+            datas = ft_buffer('0', datas);
+    }
+    datas = (datas.flag[prec] == '.' && datas.flag[size_prec] <= 0 && val == 0) ?
+        datas : putnbr_base(val, tab, datas);
+    if (datas.flag[flags] == '-')
+        while (datas.flag[size]-- > l)
+            datas = ft_buffer(' ', datas);
+    return (datas);
+}
+
 t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
 {
-	int val;
-	int j;
-	int prec_len;
-	char *stringValue;
+	unsigned long int val;
+    char tab[17];
 	int len;
+    int tmp;
 
 	(void)s;
-	j = 0;
+    tmp = datas.flag[size_prec];
 	datas.flag[temp] = i;
-	val = va_arg(ap, long long);
-	stringValue = ft_itoa_base(datas, val, 16);
-	stringValue = string_lower(stringValue);
-    len = (int)ft_strlen(stringValue);
-    prec_len = (val == 0 && (datas.flag[prec] == '.' &&
-				datas.flag[size_prec] == 0) ? 0 : datas.flag[size_prec] - (len + 2));
-    len = (datas.flag[prec] == '.' && datas.flag[size_prec] == 0) ? 0 : len;
-    if (val >= 0)
-	{
-		datas.flag[size] -= datas.flag[size] ? 2 : 0;
-		if (datas.flag[flags] == '0')
-		{
-			datas = ft_buffer('0', datas);
-			datas = ft_buffer('x', datas);	
-			datas = ft_left_justify(datas, len);
-		}
-		else
-		{
-			if (datas.flag[size] > len)
-			{
-			    datas = fill_size(datas, len);
-			    datas = ft_buffer('0', datas);
-			    datas = ft_buffer('x', datas);
-			}
-            else
-            {
-                if (datas.flag[size_prec] > 0)
-                {
-                    datas = ft_buffer('0', datas);
-				    datas = ft_buffer('x', datas);
-                }
-			    datas = fill_size(datas, prec_len);
-                if (!datas.flag[size_prec])
-                {
-                    datas = ft_buffer('0', datas);
-				    datas = ft_buffer('x', datas);
-                }
-            }
-		}
-		while (stringValue[j] && len != 0)
-			datas = ft_buffer(stringValue[j++], datas);
-		free(stringValue);
-	}
-	return (datas);
+    ft_strlcpy(tab, "0123456789abcdef", 17);
+    val = va_arg(ap, unsigned long int);
+    len = nb_len_hexa(val, 16);
+    len = len > datas.flag[size_prec] ? len : datas.flag[size_prec];
+    len = datas.flag[prec] == '.' && datas.flag[size_prec] == 0 && val == 0 ?
+        0 : len;
+    len += 2;
+    if (datas.flag[flags])
+        datas = handle_flag_p(val, datas, tab, len);
+    else
+    {
+        len = nb_len_hexa(val, 16);
+        len = datas.flag[prec] == '.' && datas.flag[size_prec] == 0 && val == 0 ?
+            0 : len;
+        datas.flag[size] -= datas.flag[size] >= 2 ? 2 : 0;
+        while (datas.flag[size] > len)
+        {
+            datas = ft_buffer(' ', datas);
+            datas.flag[size]--;
+        }
+        datas = ft_buffer('0', datas);
+        datas = ft_buffer('x', datas);
+        while ((tmp-- - len) > 0)
+            datas = ft_buffer('0', datas);
+        datas = (datas.flag[prec] == '.' && datas.flag[size_prec] <= 0 && val == 0) ?
+            datas : putnbr_base(val, tab,  datas);
+    }
+    return (datas);
 }

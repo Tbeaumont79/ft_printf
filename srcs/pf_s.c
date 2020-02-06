@@ -20,8 +20,9 @@ static t_struct	ft_display_val(t_struct datas, char *val, int prec_len)
     j = 0;
     while (val[j])
     {
-        if (j < prec_len)
-            datas = ft_buffer(val[j], datas);
+        if (j >= prec_len)
+            break ;
+        datas = ft_buffer(val[j], datas);
         j++;
     }
     return (datas);
@@ -54,9 +55,10 @@ t_struct	handle_flag(t_struct datas, char *val, int len)
     }
     else
     {
-        if (len == 0)
+        if (datas.flag[prec] == '.' && datas.flag[size_prec] == 0)
             return (datas);
-        datas = ft_display_val(datas, val, len);
+        else
+            datas = ft_display_val(datas, val, len);
     }
     if (datas.flag[flags] == '-')
     {

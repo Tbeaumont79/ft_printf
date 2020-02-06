@@ -45,7 +45,8 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	datas.flag[prec] = (s[datas.flag[temp]] == '.' ? '.' : '\0');
 	datas.flag[temp] += (s[datas.flag[temp]] == '.' ? 1 : 0);
 	datas = check_for_size(ap, datas, s);
-	return (datas);
+    
+    return (datas);
 }
 // deux changer dans les conditions d'attribution de flag
 /*
