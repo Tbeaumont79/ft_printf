@@ -70,16 +70,6 @@ t_struct	handle_flag(t_struct datas, char *val, int len)
 	return (datas);
 }
 
-char	*handle_null(char *val)
-{
-	char *tmp;
-
-	if (!(tmp = ft_strdup("(null)")))
-		return (0);
-	val = tmp;
-	free(tmp);
-	return (val);
-}
 
 t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 {
@@ -90,7 +80,7 @@ t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 
 	j = 0;
 	if ((val = va_arg(ap, char *)) == NULL)
-		val = handle_null(val);
+		val = "(null)";
 	datas.flag[temp] = i;
 	len = (int)ft_strlen(val);
 	if (datas.flag[size_prec] > 0)

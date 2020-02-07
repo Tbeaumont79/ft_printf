@@ -25,7 +25,8 @@ t_struct	fill_size_neg(t_struct datas, int len_arg)
 	{
 		if (prec_len > 0)
 		{
-			datas = datas.flag[neg] == 0 ? ft_buffer('-', datas) : datas;
+			datas = datas.flag[neg] == 0 && (datas.flag[conv] == 'd' ||
+                    datas.flag[conv] == 'i') ? ft_buffer('-', datas) : datas;
 			datas.flag[neg] = 1;
 		}
 		while (prec_len > len_arg)
@@ -85,11 +86,12 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int base)
 		datas = fill_if_neg(datas, tmp);
     if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
 		datas = fill_right_justify_prec(datas, tmp, l);
-	if (datas.flag[conv] == 'x')
-		neg_str = string_lower(neg_str); 
     while (neg_str[i])
     {
-        datas = ft_buffer(neg_str[i], datas);
+        if (datas.flag[conv] == 'x' && neg_str[i] >= 'A' && neg_str[i] <= 'Z')
+            datas = ft_buffer(neg_str[i] + 32, datas);
+        else
+            datas = ft_buffer(neg_str[i], datas);
         i++;
     }
     if (datas.flag[flags] == '-')

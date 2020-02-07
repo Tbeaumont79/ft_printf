@@ -26,7 +26,10 @@ t_struct		ft_dispatcher(va_list ap, t_struct datas, int i, const char *s)
 	while (j < size)
 	{
 		if (conve[j] == s[i])
+        {
+            datas.flag[conv] = conve[j];
 			break ;
+        }
 		j++;
 	}
 	if (j >= 0 && j < size)

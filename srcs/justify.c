@@ -20,7 +20,7 @@ t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;
 	}
-    if (datas.flag[neg] == 1)
+    if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
         datas = ft_buffer('-', datas);
 	while (prec_len > 0)
 	{
@@ -66,7 +66,7 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 			datas = fill_if_prec(datas, len_arg, prec_len);
 		else
         {
-            if (datas.flag[neg] == 1)
+            if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
                 datas = ft_buffer('-', datas);
             datas = fill_with_char('0', datas, final_length);
         }

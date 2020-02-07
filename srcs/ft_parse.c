@@ -78,11 +78,13 @@ t_struct is_conv(t_struct datas, int i, const char *s)
 {
     static char conve[8] = {'x', 'X', 'd', 'i', 'c', 's', '%', 'u'};
     int j;
+    int len;
 
+    len = ft_strlen(conve);
     while (s[i])
     {
         j = 0;
-        while (conve[j])
+        while (j < len)
         {
             if (conve[j] == s[i])
             {
@@ -116,7 +118,7 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 			datas = is_conv(datas, tmp, s);
             datas.flag[temp] = i;
             datas = get_flag(ap, datas, s, i);
-            i = datas.flag[temp];
+            i = s[datas.flag[temp]] ? datas.flag[temp] : i;
             datas = ft_dispatcher(ap, datas, i, s);
 		}
 		i++;
