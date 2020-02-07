@@ -74,10 +74,26 @@ static int ft_get_flag(t_struct datas, const char *s, int i)
     return (i);
 }
 */
-int	is_conv(int i, const char *s)
+t_struct is_conv(t_struct datas, int i, const char *s)
 {
-	return (s[i] == 'x' || s[i] == 'X' || s[i] == 'd' ||
-		   	s[i] == 'i' || s[i] == 'c' || s[i] == 's' || s[i] == '%');
+    static char conve[8] = {'x', 'X', 'd', 'i', 'c', 's', '%', 'u'};
+    int j;
+
+    while (s[i])
+    {
+        j = 0;
+        while (conve[j])
+        {
+            if (conve[j] == s[i])
+            {
+                datas.flag[conv] = conve[j];
+                break ;
+            }
+            j++;
+        }
+        i++;
+    }
+    return (datas);
 }
 int ft_parse(va_list ap, t_struct datas, const char *s)
 {
@@ -97,17 +113,8 @@ int ft_parse(va_list ap, t_struct datas, const char *s)
 		if (s[i] == '%')
 		{
 			tmp = i + 1;
-			while (s[tmp])
-			{
-				if (is_conv(tmp, s))
-				{
-					datas.flag[conv] = s[tmp];
-					break ;
-				}
-				else
-					tmp++;
-			}
-			datas.flag[temp] = i;
+			datas = is_conv(datas, tmp, s);
+            datas.flag[temp] = i;
             datas = get_flag(ap, datas, s, i);
             i = datas.flag[temp];
             datas = ft_dispatcher(ap, datas, i, s);

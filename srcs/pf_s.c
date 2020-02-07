@@ -95,7 +95,7 @@ t_struct pf_s(va_list ap, t_struct datas, int i, const char *s)
 	len = (int)ft_strlen(val);
 	if (datas.flag[size_prec] > 0)
 		len = len > datas.flag[size_prec] ? datas.flag[size_prec] : len;
-	if (datas.flag[prec] == '.' && datas.flag[size_prec] == 0)
+	if (datas.flag[prec] == '.' && (datas.flag[size_prec] == 0))
 		len = 0;
 	if (datas.flag[flags])
 		datas = handle_flag(datas, val, len);

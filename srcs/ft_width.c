@@ -23,8 +23,10 @@ t_struct	ft_width(va_list ap, t_struct datas, const char *s, int i)
 	tmp = 0;
 	if ((tmp = va_arg(ap, int)) == 0)
 	{
-		datas.flag[size] = 0;
-		datas.flag[size_prec] = 0;
+        if (i > 0 && s[i - 1] == '.')
+		    datas.flag[size_prec] = 0;
+        else
+            datas.flag[size] = 0;
 		datas.flag[temp]++;
 		return (datas);
 	}
