@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:05 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/06 10:49:13 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:07:13 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ t_struct handle_flag_p(unsigned long int val, t_struct datas, char *tab, int l)
         datas = ft_buffer('x', datas);
     }
     if (datas.flag[flags] == '0')
-    {
         while (datas.flag[size]-- > l)
             datas = ft_buffer('0', datas);
-    }
     if (datas.flag[prec] == '.')
     {
         if (datas.flag[flags] != '-')
@@ -56,8 +54,8 @@ t_struct handle_flag_p(unsigned long int val, t_struct datas, char *tab, int l)
         while (datas.flag[size_prec]-- > l)
             datas = ft_buffer('0', datas);
     }
-    datas = (datas.flag[prec] == '.' && datas.flag[size_prec] <= 0 && val == 0) ?
-        datas : putnbr_base(val, tab, datas);
+    datas = (datas.flag[prec] == '.' && datas.flag[size_prec] <= 0 && val == 0)
+	   	? datas : putnbr_base(val, tab, datas);
     if (datas.flag[flags] == '-')
         while (datas.flag[size]-- > l)
             datas = ft_buffer(' ', datas);
@@ -66,10 +64,10 @@ t_struct handle_flag_p(unsigned long int val, t_struct datas, char *tab, int l)
 
 t_struct pf_p(va_list ap, t_struct datas, int i, const char *s)
 {
-	unsigned long int val;
-    char tab[17];
-	int len;
-    int tmp;
+	unsigned long int	val;
+    char				tab[17];
+	int					len;
+    int					tmp;
 
 	(void)s;
     tmp = datas.flag[size_prec];

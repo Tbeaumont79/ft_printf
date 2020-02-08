@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/07 14:59:43 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:31:17 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,28 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 	len = ft_strlen(stringValue);
 	len = ((val == 0 && (datas.flag[prec] == '.' &&
 					datas.flag[size_prec] == 0)) ? 0 : ft_strlen(stringValue));
-	prec_len = 0;
+	prec_len = datas.flag[size_prec] > len ? datas.flag[size_prec] - len : 0;
 	if (val >= 0)
 	{
 		if ((!datas.flag[flags] && datas.flag[size] > 0) ||
 				(!datas.flag[flags] && datas.flag[size_prec] > 0))
 			datas = fill_size(datas, len);
 		if (datas.flag[flags] == '0')
-			datas = ft_left_justify(datas, (int)ft_strlen(stringValue));
+		{
+			datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
+			   	datas.flag[prec] == '.' && val == 0 && datas.flag[size] <= 0 ?
+			   	len : datas.flag[size_prec];
+			datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
+			   	datas.flag[prec] == '.' && val == 0 && datas.flag[size] >= len ?
+			   	datas.flag[size] : datas.flag[size_prec];
+			datas.flag[size_prec] =
+			  	datas.flag[size_prec] < 0 && datas.flag[prec] == '.' &&
+			   	datas.flag[size] > (len + (-datas.flag[size_prec])) &&
+					   	val > 0 ? datas.flag[size] - len : datas.flag[size_prec];
+			datas = ft_left_justify(datas, len);
+		}
 		if (datas.flag[prec] == '.' && datas.flag[flags] != '0' && datas.flag[flags])
-			datas = fill_right_justify_prec(datas, (int)ft_strlen(stringValue), len);
+			datas = fill_right_justify_prec(datas, len, prec_len);
 		while (stringValue[j] && !(val == 0 && datas.flag[prec] == '.' && datas.flag[size_prec] == 0))
 			datas = ft_buffer(stringValue[j++], datas);
 		len = len > datas.flag[size_prec] ? len : datas.flag[size_prec];
@@ -81,6 +93,6 @@ t_struct pf_d(va_list ap, t_struct datas, int i, const char *s)
 		free(stringValue);
 	}
 	else
-		datas = handle_neg(datas, val, 10, len);
+		datas = handle_neg(datas, val, 10);
 	return (datas);
 }

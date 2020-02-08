@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/06 11:27:07 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 15:04:43 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 t_struct     fill_if_prec(t_struct datas, int len_arg, int prec_len)
 {
-    while (datas.flag[size] - len_arg > 0 && datas.flag[size] - len_arg > prec_len)
+	while (datas.flag[size] - len_arg > prec_len)
 	{
 		datas = ft_buffer(' ', datas);
 		datas.flag[size]--;
 	}
-    if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
-        datas = ft_buffer('-', datas);
+	if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
+		datas = ft_buffer('-', datas);
 	while (prec_len > 0)
 	{
 		datas = ft_buffer('0', datas);
@@ -57,26 +57,16 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 	int final_length;
 	int prec_len;
 
-    prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
+	prec_len = datas.flag[size_prec] > len_arg ? datas.flag[size_prec] - len_arg : 0;
 	len_arg += datas.flag[neg] == 1;
 	final_length = ft_get_final_length(len_arg, datas);
-	if (datas.flag[flags] == '0')
-	{
-		if (datas.flag[prec] == '.')
-			datas = fill_if_prec(datas, len_arg, prec_len);
-		else
-        {
-            if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
-                datas = ft_buffer('-', datas);
-            datas = fill_with_char('0', datas, final_length);
-        }
-	}
+	if (datas.flag[prec] == '.')
+		datas = fill_if_prec(datas, len_arg, prec_len);
 	else
 	{
-		if (datas.flag[prec] == '.')
-			datas = fill_if_prec(datas, len_arg, prec_len);
-		else
-			datas = fill_with_char(' ', datas, final_length);
+		if (datas.flag[neg] == 1 && (datas.flag[conv] == 'd' || datas.flag[conv] == 'i'))
+			datas = ft_buffer('-', datas);
+		datas = fill_with_char('0', datas, final_length);
 	}
 	return (datas);
 }

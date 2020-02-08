@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:08:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/07 13:48:05 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:52:39 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1244,6 +1244,11 @@ static void d()
 }
 */
 // ameliorer le get_flag
+void u(){
+	ft_printf("FOR u  :: ---------------------------\n");
+	printf("my return : %d\n",ft_printf("simple test : %0u \n", -2147483647));
+    printf("printf return %d\n", printf("simple test : %0u \n", -2147483647));
+}
 int main(int ac, char **av)
 {
 	if (ac - 1 > 0)
@@ -1253,7 +1258,9 @@ int main(int ac, char **av)
             huge();
 			d();
         }
-        if(av[1][0] == 's')
+		if (av[1][0] == 'u')
+			u();
+		if(av[1][0] == 's')
             s();
         if(av[1][0] == 'x')
             x();

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:20 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/30 14:15:28 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:32:21 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 t_struct pf_XU(va_list ap, t_struct datas, int i, const char *s)
 {
-    int val;
-    int j;
-    int prec_len;
-    char *stringValue;
-    int len;
+    int		val;
+    int		j;
+    int		prec_len;
+    char	*stringValue;
+    int		len;
 
     (void)s;
     j = 0;
@@ -28,14 +28,26 @@ t_struct pf_XU(va_list ap, t_struct datas, int i, const char *s)
     stringValue = ft_itoa_base(datas, val, 16);
     len = (val == 0 && (datas.flag[prec] == '.' &&
                 datas.flag[size_prec] == 0) ? 0 : ft_strlen(stringValue));
-    prec_len = datas.flag[size_prec] - len;
+    prec_len = datas.flag[size_prec] > len ? datas.flag[size_prec] - len : 0;
     if (val >= 0)
     {
         if ((!datas.flag[flags] && datas.flag[size] > 0) ||
                 (!datas.flag[flags] && datas.flag[size_prec] > 0))
             datas = fill_size(datas, len);
         if (datas.flag[flags] == '0')
+		{
+			datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
+			   	datas.flag[prec] == '.' && val == 0 && datas.flag[size] <= 0 ?
+			   	len : datas.flag[size_prec];
+			datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
+			   	datas.flag[prec] == '.' && val == 0 && datas.flag[size] >= len ?
+			   	datas.flag[size] : datas.flag[size_prec];
+			datas.flag[size_prec] =
+			  	datas.flag[size_prec] < 0 && datas.flag[prec] == '.' &&
+			 datas.flag[size] > (len + (-datas.flag[size_prec])) &&
+			 val > 0 ? datas.flag[size] - len : datas.flag[size_prec];
             datas = ft_left_justify(datas, len);
+		}
         if (datas.flag[flags] == '-' && datas.flag[prec] == '.')
             datas = fill_right_justify_prec(datas, len, prec_len);
         while (stringValue[j] && len > 0)
@@ -45,6 +57,6 @@ t_struct pf_XU(va_list ap, t_struct datas, int i, const char *s)
         free(stringValue);
     }
 	else
-		datas = handle_neg(datas, val, 16, prec_len);
+		datas = handle_neg(datas, val, 16);
 	return (datas);
 }

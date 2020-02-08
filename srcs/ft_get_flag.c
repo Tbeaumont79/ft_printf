@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:14 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/05 16:33:23 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:57:04 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_struct get_flag(va_list ap, t_struct datas, const char *s, int i)
 	datas.flag[temp] = i + 1;
 	datas.flag[size] = 0;
 	datas.flag[size_prec] = 0;
+	datas.flag[neg] = 0;
     while (j < (int)ft_strlen(flagi) && flagi[j] != s[datas.flag[temp]])
         j++;
 	datas.flag[flags] = (s[datas.flag[temp]] == flagi[j] ? s[datas.flag[temp]] : '\0');
