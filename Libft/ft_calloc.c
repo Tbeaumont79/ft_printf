@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/11 16:21:58 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/18 18:20:07 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+void	*ft_calloc(size_t count, size_t size)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	void	*ptr;
+	size_t	len;
+
+	len = count * size;
+	if (!(ptr = malloc(len)))
+		return (0);
+	ft_bzero(ptr, len);
+	return (ptr);
 }

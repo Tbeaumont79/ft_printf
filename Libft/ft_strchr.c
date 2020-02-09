@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/09 10:52:16 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/17 10:56:40 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+char	*ft_strchr(const char *s, int c)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = (char *)s;
+	while (i < (ft_strlen(str) + 1))
+	{
+		if (str[i] == c)
+			return (str + i);
+		i++;
+	}
+	return (0);
 }

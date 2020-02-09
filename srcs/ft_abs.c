@@ -6,14 +6,14 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:01 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 10:36:20 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/09 15:01:37 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-
-long long   ft_abs(long long nb)
+long long	ft_abs(long long nb)
 {
 	return (nb < 0 ? nb * -1 : nb);
 }

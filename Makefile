@@ -11,7 +11,7 @@ SOURCES = ft_printf.c \
 			ft_buffer.c \
 			pf_d.c \
 			ft_abs.c \
-			pf_XU.c \
+			pf_xu.c \
 			ft_abs.c \
 			pf_c.c \
 			pf_p.c \

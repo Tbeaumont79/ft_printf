@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/09 16:26:09 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/19 15:20:47 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	unsigned char	*source;
+	unsigned char	*dest;
+	size_t			i;
+
+	if (!dst && !src)
+		return (0);
+	source = (unsigned char *)src;
+	dest = (unsigned char *)dst;
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = source[i];
+		i++;
+	}
+	return (dst);
 }

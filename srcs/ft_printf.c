@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:06:41 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/19 13:56:06 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/09 15:38:59 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 int		ft_printf(const char *s, ...)
 {
-	va_list ap;
-	va_start(ap, s);
-	t_struct datas;
-	int size_buf;
-	
+	va_list		ap;
+	t_struct	datas;
+	int			size_buf;
+
 	datas.buf_index = 0;
+	va_start(ap, s);
 	ft_bzero(datas.buf, BUFF_SIZE);
 	size_buf = ft_parse(ap, datas, s);
 	va_end(ap);

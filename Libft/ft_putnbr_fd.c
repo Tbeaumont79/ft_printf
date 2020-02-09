@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/10 15:36:14 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/15 17:17:04 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+void	ft_putnbr_fd(int n, int fd)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 10)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10) + 48, fd);
 }

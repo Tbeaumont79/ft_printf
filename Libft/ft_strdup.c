@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/09 09:42:04 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/14 14:51:58 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+char	*ft_strdup(const char *s1)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	char	*copy;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	if (!(copy = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (0);
+	while (s1[i])
+	{
+		copy[j] = s1[i];
+		j++;
+		i++;
+	}
+	copy[j] = '\0';
+	return (copy);
 }

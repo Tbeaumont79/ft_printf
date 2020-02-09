@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/14 14:21:04 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/16 16:59:50 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	size_t	len;
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	while (s[i])
+	{
+		str[i] = (f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

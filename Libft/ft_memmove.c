@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nb_len.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 15:32:28 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/10 10:12:42 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/19 14:46:36 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-int	nb_len(long long nb, int base)
+static void	ft_cpy(char *dest, char *str, size_t len)
 {
-	int size;
+	size_t i;
 
-	size = 0;
-	if (nb < 0)
+	i = 0;
+	if (dest < str)
 	{
-		size++;
-		nb = ft_abs(nb);
+		while (i < len)
+		{
+			dest[i] = str[i];
+			i++;
+		}
 	}
-	if (nb == 0)
-		size++;
-	while (nb > 0)
+	else if (dest > str)
 	{
-		nb = nb / base;
-		size++;
+		while (len)
+		{
+			dest[len - 1] = str[len - 1];
+			len--;
+		}
 	}
-	return (size);
+}
+
+void		*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char		*dest;
+	char		*str;
+
+	dest = (char *)dst;
+	str = (char *)src;
+	ft_cpy(dest, str, len);
+	return (dst);
 }

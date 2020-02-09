@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/07 16:12:31 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/18 17:51:43 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	ch;
+
+	s = (unsigned char *)b;
+	ch = (unsigned char)c;
+	i = 0;
+	while (i < len)
+	{
+		s[i] = ch;
+		i++;
+	}
+	return (s);
 }

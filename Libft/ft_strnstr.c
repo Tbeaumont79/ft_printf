@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:17:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:13 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/11 14:14:09 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/17 13:05:16 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-t_struct	ft_buffer(char c, t_struct datas)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	datas.buf_index++;
-	ft_putchar(c);
-	return (datas);
+	size_t	needle_size;
+	size_t	i;
+
+	i = 0;
+	needle_size = ft_strlen((char *)needle);
+	if (!needle[i])
+		return ((char *)haystack);
+	while (haystack[i] && len >= needle_size)
+	{
+		if (!ft_memcmp(&haystack[i++], needle, needle_size))
+			return ((char *)(&haystack[i - 1]));
+		len--;
+	}
+	return (0);
 }

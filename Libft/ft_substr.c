@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nb_len.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 15:32:28 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/10 14:02:03 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/17 19:03:49 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-int	nb_len(long long nb, int base)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int size;
+	size_t	i;
+	size_t	slen;
+	char	*ptr;
 
-	size = 0;
-	if (nb < 0)
+	if (!s || start < 0)
+		return (0);
+	slen = ft_strlen(s);
+	i = 0;
+	if (start >= slen)
+		len = 0;
+	else
+		len = slen - start < len ? slen - start : len;
+	if (!(ptr = (char *)malloc(len + 1)))
+		return (0);
+	while (len)
 	{
-		size++;
-		nb = ft_abs(nb);
+		ptr[i] = s[start];
+		i++;
+		start++;
+		len--;
 	}
-	if (nb == 0)
-		size++;
-	while (nb > 0)
-	{
-		nb = nb / base;
-		size++;
-	}
-	return (size);
+	ptr[i] = '\0';
+	return (ptr);
 }

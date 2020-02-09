@@ -6,23 +6,23 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:24 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/01/16 08:18:40 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/09 15:39:58 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-char *string_lower(char *s)
+char	*string_lower(char *s)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] >= 'A' && s[i] <= 'Z')
-            s[i] += 32;
-        i++;
-    }
-    return (s);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= 'A' && s[i] <= 'Z')
+			s[i] += 32;
+		i++;
+	}
+	return (s);
 }

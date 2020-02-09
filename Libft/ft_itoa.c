@@ -1,34 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nb_len.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 15:32:28 by thbeaumo         ###   ########.fr       */
+/*   Created: 2019/10/10 15:54:54 by thbeaumo          #+#    #+#             */
+/*   Updated: 2019/10/17 14:12:39 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/libft.h"
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
-int	nb_len(long long nb, int base)
+static int	nb_len(long int n)
 {
 	int size;
 
 	size = 0;
-	if (nb < 0)
+	if (n < 0)
 	{
 		size++;
-		nb = ft_abs(nb);
+		n *= -1;
 	}
-	if (nb == 0)
+	if (n == 0)
 		size++;
-	while (nb > 0)
+	while (n > 0)
 	{
-		nb = nb / base;
+		n = n / 10;
 		size++;
 	}
 	return (size);
+}
+
+char		*ft_itoa(int n)
+{
+	int		size;
+	char	*res;
+	int		lim;
+	long	nb;
+
+	nb = (long)n;
+	size = nb_len(n);
+	lim = 0;
+	if (!(res = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	res[size] = '\0';
+	if (nb < 0)
+	{
+		res[0] = '-';
+		nb *= -1;
+		lim = 1;
+	}
+	while (size > lim)
+	{
+		size--;
+		res[size] = nb % 10 + 48;
+		nb = nb / 10;
+	}
+	return (res);
 }
