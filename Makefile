@@ -26,7 +26,6 @@ SOURCES = ft_printf.c \
 			pf_u.c \
 			pf_x.c \
 			ft_buffer.c \
-			main.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

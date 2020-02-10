@@ -6,12 +6,13 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:47:34 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:01:21 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ft_printf.h"
 #include "../Libft/libft.h"
+#include <stdio.h>
 
 t_struct	handle_right_justify(t_struct datas, int tmp, int sizes)
 {
@@ -22,7 +23,7 @@ t_struct	handle_right_justify(t_struct datas, int tmp, int sizes)
 		tmp = sizes > tmp && datas.flag[prec] == '.' &&
 			(datas.flag[conv] == 'x' || datas.flag[conv] == 'X') ?
 			tmp + (sizes - tmp) : tmp;
-		tmp = sizes > tmp && datas.flag[prec] == '.' &&
+		tmp = sizes >= tmp && datas.flag[prec] == '.' &&
 			(datas.flag[conv] == 'i' || datas.flag[conv] == 'd') ?
 			tmp + (sizes - tmp + 1) : tmp;
 		while (datas.flag[size]-- > tmp)
