@@ -6,14 +6,14 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 15:32:28 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 14:19:43 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../headers/ft_printf.h"
 
-int	nb_len(long long nb, int base)
+long int			nb_len(long nb, int base)
 {
 	int size;
 

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:43 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 18:44:33 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:19:21 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef enum		e_flags
 	temp,
 	neg,
 	conv,
+	star,
 }					t_flags;
 
 typedef	struct		s_struct
@@ -36,20 +37,20 @@ typedef	struct		s_struct
 	char	*str;
 	char	buf[4096];
 	int		buf_index;
-	int		flag[8];
+	int		flag[9];
 }					t_struct;
 
-long long			ft_abs(long long nb);
+long				ft_abs(long nb);
 int					ft_printf(const char *s, ...);
-int					nb_len(long long nb, int base);
+long				nb_len(long nb, int base);
 int					ft_parse(va_list ap, t_struct datas, const char *s);
 char				*string_lower(char *s);
-char				*ft_itoa_base(t_struct datas, long long nb, int base);
+char				*ft_itoa_base(t_struct datas, long nb, int base);
 void				ft_display_buf(char *buf);
 t_struct			fill_if_neg(t_struct datas, int sizes);
 t_struct			fill_size_neg(t_struct datas, int len_arg);
 t_struct			fill_if_neg(t_struct datas, int sizes);
-t_struct			handle_neg(t_struct datas, long long nb, int base);
+t_struct			handle_neg(t_struct datas, long nb, int base);
 t_struct			ft_buffer(char c, t_struct datas);
 t_struct			ft_left_justify(t_struct datas, int len_arg);
 t_struct			fill_right_justify_prec(t_struct datas, int len_arg, int p);

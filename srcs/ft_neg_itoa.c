@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 10:07:02 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/10 16:01:21 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 14:20:49 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_struct	h_neg_itoa(t_struct datas, char *s, int tmp, int l)
 	return (datas);
 }
 
-t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int b)
+t_struct	display_neg_str(t_struct datas, char *neg_str, long nb, int b)
 {
 	char	*tab;
 	int		sizes;
@@ -86,7 +86,7 @@ t_struct	display_neg_str(t_struct datas, char *neg_str, long long nb, int b)
 	return (datas);
 }
 
-t_struct	handle_neg(t_struct datas, long long nb, int base)
+t_struct	handle_neg(t_struct datas, long nb, int base)
 {
 	int		lim;
 	int		sizes;

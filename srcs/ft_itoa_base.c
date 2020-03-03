@@ -6,14 +6,14 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:54:19 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 17:46:43 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 14:18:14 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ft_printf.h"
 #include "../Libft/libft.h"
 
-char	*final_itoa_result(char *tab, long long nb, int sizes, int base)
+char	*final_itoa_result(char *tab, long nb, int sizes, int base)
 {
 	char *str;
 
@@ -38,14 +38,14 @@ char	*final_itoa_result(char *tab, long long nb, int sizes, int base)
 	return (str);
 }
 
-char	*ft_itoa_base(t_struct datas, long long nb, int base)
+char	*ft_itoa_base(t_struct datas, long nb, int base)
 {
 	long long	nbr;
 	char		*tab;
 	int			sizes;
 
 	tab = "0123456789ABCDEF";
-	nbr = (long long)nb;
+	nbr = (long)nb;
 	datas.flag[size] = (datas.flag[size] < 0 ? 0
 			: datas.flag[size]);
 	datas.flag[size_prec] = (datas.flag[size_prec] < 0 ? 0

@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:27 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 16:11:31 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 16:53:05 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static	t_struct	handle_star(t_struct datas, int val, const char *s, int i)
 	{
 		if (i > 0 && s[i - 1] == '.')
 		{
+			datas.flag[star] = 1;
 			datas.flag[size_prec] = val;
 			datas.flag[temp]++;
 			return (datas);

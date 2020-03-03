@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 18:19:33 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 18:43:11 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:18:32 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int			ft_parse(va_list ap, t_struct datas, const char *s)
 			tmp = i + 1;
 			datas = is_conv(datas, tmp, s);
 			datas.flag[temp] = i;
+			datas.flag[star] = 0;
 			datas = get_flag(ap, datas, s, i);
 			i = s[datas.flag[temp]] ? datas.flag[temp] : i;
 			datas = ft_disp(ap, datas, i, s);

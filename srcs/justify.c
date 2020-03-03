@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:18:48 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 15:37:10 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:17:56 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ t_struct	ft_left_justify(t_struct datas, int len_arg)
 		datas.flag[size_prec] - len_arg : 0;
 	len_arg += datas.flag[neg] == 1;
 	final_length = ft_get_final_length(len_arg, datas);
+	prec_len = datas.flag[size_prec] == 0 && datas.flag[star] == 1 ?
+	datas.flag[size] - len_arg : prec_len;
 	if (datas.flag[prec] == '.')
 		datas = fill_if_prec(datas, len_arg, prec_len);
 	else

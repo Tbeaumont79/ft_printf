@@ -6,7 +6,7 @@
 /*   By: thbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:19:20 by thbeaumo          #+#    #+#             */
-/*   Updated: 2020/02/09 17:47:12 by thbeaumo         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:13:56 by thbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,10 @@ t_struct	fill_if_neg(t_struct datas, int sizes)
 	{
 		if (datas.flag[neg] == 0)
 			datas.flag[neg] = 1;
-		sizes -= datas.flag[neg] != 2;
+		sizes -= datas.flag[neg] != 2 ? 1 : 0;
 		datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
-			datas.flag[prec] == '.' && datas.flag[size] <= 0 ?
-			sizes : datas.flag[size_prec];
-		datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
-			datas.flag[prec] == '.' && datas.flag[size] > sizes ?
-			datas.flag[sizes] - sizes : datas.flag[size_prec];
-		datas.flag[size_prec] = datas.flag[size_prec] < 0 &&
-			datas.flag[prec] == '.' && datas.flag[size] < sizes ?
-			sizes - datas.flag[size] : datas.flag[size_prec];
+		datas.flag[star] == 1 ?
+		0 : datas.flag[size_prec];
 		datas = ft_left_justify(datas, sizes);
 	}
 	return (datas);
